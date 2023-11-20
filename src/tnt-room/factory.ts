@@ -1,10 +1,20 @@
-import { MeshCollider, MeshRenderer, Transform, type Entity } from '@dcl/sdk/ecs'
+import {
+  MeshCollider,
+  MeshRenderer,
+  Transform,
+  type Entity
+} from '@dcl/sdk/ecs'
 import { type Vector3 } from '@dcl/sdk/math'
 import { sceneEntities } from '../entity'
 import { DyingCube, Room } from './components'
 
 // Cube factory
-export function createCube(x: number, y: number, z: number, spawner = true): Entity {
+export function createCube(
+  x: number,
+  y: number,
+  z: number,
+  spawner = true
+): Entity {
   const entity = sceneEntities.addEntity()
   DyingCube.create(entity, {
     t: 3 + 10 * Math.random()

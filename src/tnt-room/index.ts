@@ -13,7 +13,11 @@ export function main(): void {
   const parcelSizeZ = 6
   const levelAmount = 4
   const levelHeight = 15
-  const startPosition = Vector3.create(-(parcelSizeX / 2) * 16 + 1, 5, -(parcelSizeZ / 2) * 16 + 1)
+  const startPosition = Vector3.create(
+    -(parcelSizeX / 2) * 16 + 1,
+    5,
+    -(parcelSizeZ / 2) * 16 + 1
+  )
 
   const startCube = createCube(startPosition.x + 1, 0, startPosition.z + 1)
   createRoom(startPosition, 2, 40, levelHeight, levelAmount)

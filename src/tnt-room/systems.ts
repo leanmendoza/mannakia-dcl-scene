@@ -1,4 +1,10 @@
-import { type Entity, MeshCollider, MeshRenderer, Transform, engine } from '@dcl/sdk/ecs'
+import {
+  type Entity,
+  MeshCollider,
+  MeshRenderer,
+  Transform,
+  engine
+} from '@dcl/sdk/ecs'
 import { DyingCube, Room } from './components'
 import { Vector3 } from '@dcl/sdk/math'
 
@@ -23,13 +29,21 @@ export function roomSystem(): void {
       for (let it = 0; it < 50; it++) {
         const position = Vector3.add(
           room.topLeftCorner,
-          Vector3.create(room.tempX * room.cubeSize, room.tempLevel * room.levelHeight, room.tempZ * room.cubeSize)
+          Vector3.create(
+            room.tempX * room.cubeSize,
+            room.tempLevel * room.levelHeight,
+            room.tempZ * room.cubeSize
+          )
         )
         const cubeIndex =
           room.tempX +
           room.tempZ * roomWrapper.room.cubeAmount +
-          roomWrapper.room.cubeAmount * roomWrapper.room.cubeAmount * room.tempLevel
-        const cubeEntity = (roomWrapper.room.cubeStartEntity + cubeIndex + 1) as Entity
+          roomWrapper.room.cubeAmount *
+            roomWrapper.room.cubeAmount *
+            room.tempLevel
+        const cubeEntity = (roomWrapper.room.cubeStartEntity +
+          cubeIndex +
+          1) as Entity
 
         Transform.createOrReplace(cubeEntity, { position, scale })
         MeshRenderer.setBox(cubeEntity)
@@ -54,7 +68,11 @@ export function roomSystem(): void {
 
     const topLeftCornerCenter = Vector3.add(
       roomWrapper.room.topLeftCorner,
-      Vector3.create(-roomWrapper.room.cubeSize / 2, 0, -roomWrapper.room.cubeSize / 2)
+      Vector3.create(
+        -roomWrapper.room.cubeSize / 2,
+        0,
+        -roomWrapper.room.cubeSize / 2
+      )
     )
     const playerCubePosition = Vector3.scale(
       Vector3.subtract(playerPosition, topLeftCornerCenter),
@@ -76,8 +94,12 @@ export function roomSystem(): void {
 
     console.log({ xCube, zCube, level })
     const cubeIndex =
-      xCube + zCube * roomWrapper.room.cubeAmount + roomWrapper.room.cubeAmount * roomWrapper.room.cubeAmount * level
-    const cubeEntity = (roomWrapper.room.cubeStartEntity + cubeIndex + 1) as Entity
+      xCube +
+      zCube * roomWrapper.room.cubeAmount +
+      roomWrapper.room.cubeAmount * roomWrapper.room.cubeAmount * level
+    const cubeEntity = (roomWrapper.room.cubeStartEntity +
+      cubeIndex +
+      1) as Entity
 
     if (DyingCube.has(cubeEntity)) {
       continue

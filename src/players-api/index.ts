@@ -1,4 +1,8 @@
-import { getConnectedPlayers, getPlayerData, getPlayersInScene } from '~system/Players'
+import {
+  getConnectedPlayers,
+  getPlayerData,
+  getPlayersInScene
+} from '~system/Players'
 import { sceneSystems } from '../system'
 
 export function main(): void {
@@ -10,7 +14,6 @@ export function main(): void {
         })
         .catch(console.error)
 
-        
       getPlayersInScene({})
         .then((data) => {
           console.log({ getConnectedPlayers: { players: data.players } })

@@ -10,7 +10,10 @@ executeTask(setMainSceneUi)
 
 engine.addSystem(() => {
   // console.log(inputSystem.isPressed(InputAction.IA_PRIMARY), inputSystem.isPressed(InputAction.IA_SECONDARY))
-  if (inputSystem.isPressed(InputAction.IA_PRIMARY) && inputSystem.isPressed(InputAction.IA_SECONDARY)) {
+  if (
+    inputSystem.isPressed(InputAction.IA_PRIMARY) &&
+    inputSystem.isPressed(InputAction.IA_SECONDARY)
+  ) {
     ReactEcsRenderer.setUiRenderer(MainSceneUi)
   }
 })

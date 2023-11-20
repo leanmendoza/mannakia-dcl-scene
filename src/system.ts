@@ -5,7 +5,12 @@ type SystemItem = { system: SystemFn; name?: string }
 
 function createSystemManagerFunction(): {
   addSystem: (system: SystemFn, priority?: number, name?: string) => void
-  addSystemWithInverval: (system: SystemFn, interval: number, name: string, priority?: number) => void
+  addSystemWithInverval: (
+    system: SystemFn,
+    interval: number,
+    name: string,
+    priority?: number
+  ) => void
   removeSystem: (selector: string | SystemFn) => boolean
   clean: () => void
   isEmpty: () => boolean
@@ -18,7 +23,12 @@ function createSystemManagerFunction(): {
       engine.addSystem(system, priority, name)
       arr.push({ system, name })
     },
-    addSystemWithInverval(system: SystemFn, interval: number, name: string, priority?: number) {
+    addSystemWithInverval(
+      system: SystemFn,
+      interval: number,
+      name: string,
+      priority?: number
+    ) {
       let t = 0
       const wrappedSystem = (dt: number): void => {
         t += dt
@@ -30,7 +40,9 @@ function createSystemManagerFunction(): {
       this.addSystem(wrappedSystem, priority, name)
     },
     removeSystem(selector: string | SystemFn) {
-      const element = arr.find((item) => item.name === selector || item.system === selector)
+      const element = arr.find(
+        (item) => item.name === selector || item.system === selector
+      )
       if (element === undefined) return false
 
       let result = false
