@@ -14,6 +14,10 @@ jobs:
         with:
           node-version: 18.x
       - name: install dependencies
-        run: npm install
+        run: npm install @dcl/sdk@protocol-squad
       - name: npm run build
         run: npm run build
+      - name: lint
+        run: npm run lint
+      - name: format
+        run: npm run format
