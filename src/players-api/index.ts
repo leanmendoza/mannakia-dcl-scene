@@ -7,7 +7,7 @@ import { sceneSystems } from '../system'
 
 export function main(): void {
   sceneSystems.addSystemWithInverval(
-    (dt) => {
+    (_dt) => {
       getConnectedPlayers({})
         .then((data) => {
           console.log({ getConnectedPlayers: { players: data.players } })
@@ -16,7 +16,7 @@ export function main(): void {
 
       getPlayersInScene({})
         .then((data) => {
-          console.log({ getConnectedPlayers: { players: data.players } })
+          console.log({ getPlayersInScene: { players: data.players } })
 
           if (data.players.length > 0) {
             getPlayerData({ userId: data.players[0].userId })
