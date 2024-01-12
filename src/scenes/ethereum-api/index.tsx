@@ -23,8 +23,7 @@ export function main(): void {
     (_dt) => {
       getUserData({})
         .then((res) => {
-          state.playerUserId =
-            res.data?.userId !== undefined ? res.data?.userId : 'unknown'
+          state.playerUserId = res.data?.userId !== undefined ? res.data?.userId : 'unknown'
           state.connectedWeb3 = res.data?.hasConnectedWeb3
         })
         .catch(console.error)
@@ -38,7 +37,7 @@ async function handleBalance(): Promise<void> {
   console.log('Checking balance')
   crypto.mana
     .myBalance()
-    .then((balance: number) => {
+    .then((balance: any) => {
       state.currentBalance = balance
     })
     .catch(console.error)
@@ -66,15 +65,9 @@ async function handleGasPrice(): Promise<void> {
 export function MainSceneUi(): JSX.Element {
   return (
     <UiBox width={400} height={300} uiTransform={{ padding: 10 }}>
-      <Label
-        value={`Player UserId: ${state.playerUserId}`}
-        uiTransform={{ height: 30 }}
-      />
+      <Label value={`Player UserId: ${state.playerUserId}`} uiTransform={{ height: 30 }} />
       {state.connectedWeb3 !== true && (
-        <Label
-          value="Only web3 connection can send transaction (library limitation)"
-          uiTransform={{ height: 30 }}
-        />
+        <Label value="Only web3 connection can send transaction (library limitation)" uiTransform={{ height: 30 }} />
       )}
 
       <Button
@@ -83,10 +76,7 @@ export function MainSceneUi(): JSX.Element {
         value="Check Mana Balance"
       ></Button>
       {state.currentBalance !== undefined && (
-        <Label
-          value={`Balance: ${state.currentBalance}`}
-          uiTransform={{ height: 30 }}
-        />
+        <Label value={`Balance: ${state.currentBalance}`} uiTransform={{ height: 30 }} />
       )}
 
       <Button
@@ -101,12 +91,7 @@ export function MainSceneUi(): JSX.Element {
         onMouseDown={callPromise(handleGasPrice)}
         value="Check Gas Price"
       ></Button>
-      {state.gasPrice !== undefined && (
-        <Label
-          value={`Gas price: ${state.gasPrice}`}
-          uiTransform={{ height: 30 }}
-        />
-      )}
+      {state.gasPrice !== undefined && <Label value={`Gas price: ${state.gasPrice}`} uiTransform={{ height: 30 }} />}
     </UiBox>
   )
 }
