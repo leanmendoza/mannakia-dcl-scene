@@ -1,8 +1,21 @@
-import ReactEcs, { Dropdown, Input, UiEntity, type JSX, Label } from '@dcl/sdk/react-ecs'
+import ReactEcs, {
+  Dropdown,
+  Input,
+  UiEntity,
+  type JSX,
+  Label
+} from '@dcl/sdk/react-ecs'
 import { sceneSystems } from '../../utils/system'
 import { UiBox } from '../../utils/ui/box'
 
-import { MeshRenderer, TextShape, Transform, type PBTextShape, TextAlignMode, Font } from '@dcl/sdk/ecs'
+import {
+  MeshRenderer,
+  TextShape,
+  Transform,
+  type PBTextShape,
+  TextAlignMode,
+  Font
+} from '@dcl/sdk/ecs'
 import { Color3, Color4, Vector3 } from '@dcl/sdk/math'
 import { sceneEntities } from '../../utils/entity'
 import { GODOT_ALL_COLORS, GODOT_ALL_COLORS_KEYS } from '../../utils/color'
@@ -197,8 +210,12 @@ export function MainSceneUi(): JSX.Element {
           color={Color4.Black()}
           onChange={(newValue) => {
             state.textColorIndex = Number(newValue)
-            state.textShape.textColor = GODOT_ALL_COLORS[GODOT_ALL_COLORS_KEYS[state.textColorIndex]]
-            console.log({ colorIndex: state.textColorIndex, color: state.textShape.textColor })
+            state.textShape.textColor =
+              GODOT_ALL_COLORS[GODOT_ALL_COLORS_KEYS[state.textColorIndex]]
+            console.log({
+              colorIndex: state.textColorIndex,
+              color: state.textShape.textColor
+            })
           }}
           options={GODOT_ALL_COLORS_KEYS}
           selectedIndex={state.textColorIndex}
@@ -209,10 +226,10 @@ export function MainSceneUi(): JSX.Element {
           uiBackground={{ color: Color4.White() }}
           color={Color4.Black()}
           onChange={(newValue) => {
-            state.textShape.textWrapping = Number(newValue) == 1
+            state.textShape.textWrapping = Number(newValue) === 1
           }}
           options={['NO', 'YES']}
-          selectedIndex={state.textShape.textWrapping ? 1 : 0}
+          selectedIndex={state.textShape.textWrapping === true ? 1 : 0}
         />
       </UiEntity>
     </UiBox>
