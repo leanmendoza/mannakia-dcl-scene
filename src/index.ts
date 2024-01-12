@@ -1,1 +1,1 @@
-export * from './main-scene/index'
+export * from './scenes/main-scene/index'

@@ -34,5 +34,8 @@
     "singleQuote": true,
     "printWidth": 120,
     "trailingComma": "none"
+  },
+  "dependencies": {
+    "dcl-crypto-toolkit": "^1.0.0-20231102170834.commit-63c4be6"
   }
 }
