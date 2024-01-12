@@ -5,6 +5,7 @@ import { UiBox } from '../../utils/ui/box'
 import * as crypto from 'dcl-crypto-toolkit'
 import { getUserData } from '~system/UserIdentity'
 import { sendAsync } from '~system/EthereumController'
+import { callPromise } from '../../utils'
 
 type State = {
   playerUserId: string
@@ -58,12 +59,8 @@ async function handleGasPrice(): Promise<void> {
 
   const gasPriceResult = JSON.parse(res.jsonAnyResponse)
   const gasPrice = Number(gasPriceResult?.result)
-  console.log({ gasPrice })
+  console.log('asdasd', { gasPriceResult })
   state.gasPrice = gasPrice
-}
-
-function callPromise<T>(a: Promise<T>): void {
-  a.then().catch(console.error)
 }
 
 export function MainSceneUi(): JSX.Element {
@@ -81,9 +78,7 @@ export function MainSceneUi(): JSX.Element {
       )}
 
       <Button
-        onMouseDown={() => {
-          callPromise(handleBalance())
-        }}
+        onMouseDown={callPromise(handleBalance)}
         disabled={state.connectedWeb3 !== true}
         value="Check Mana Balance"
       ></Button>
@@ -96,18 +91,14 @@ export function MainSceneUi(): JSX.Element {
 
       <Button
         uiTransform={{ margin: { top: 10 } }}
-        onMouseDown={() => {
-          callPromise(handleSendMana())
-        }}
+        onMouseDown={callPromise(handleSendMana)}
         disabled={state.connectedWeb3 !== true}
         value="Try send Mana"
       ></Button>
 
       <Button
         uiTransform={{ margin: { top: 10 } }}
-        onMouseDown={() => {
-          callPromise(handleGasPrice())
-        }}
+        onMouseDown={callPromise(handleGasPrice)}
         value="Check Gas Price"
       ></Button>
       {state.gasPrice !== undefined && (

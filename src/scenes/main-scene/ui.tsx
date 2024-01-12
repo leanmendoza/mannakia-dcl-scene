@@ -8,47 +8,19 @@ import ReactEcs, {
 } from '@dcl/sdk/react-ecs'
 import { sceneEntities } from '../../utils/entity'
 import { sceneSystems } from '../../utils/system'
-import { main as TntRoomMain } from '../tnt-room'
-import {
-  main as PlayerApiTestMain,
-  MainSceneUi as PlayersApiUi
-} from '../players-api'
-import {
-  main as EthereumApiTestMain,
-  MainSceneUi as EthereumApiUi
-} from '../ethereum-api'
-
-type SceneItem = {
-  name: string
-  mainFn?: () => void
-  ui?: () => JSX.Element
-}
-
-const scenesOptions: SceneItem[] = [
-  {
-    name: 'Empty',
-    mainFn: undefined,
-    ui: undefined
-  },
-  {
-    name: 'TNT-Room',
-    mainFn: TntRoomMain,
-    ui: undefined
-  },
-  {
-    name: 'Players API test',
-    mainFn: PlayerApiTestMain,
-    ui: PlayersApiUi
-  },
-  {
-    name: 'Ethereum API test',
-    mainFn: EthereumApiTestMain,
-    ui: EthereumApiUi
-  }
-]
+import { scenesOptions } from './scenes'
 
 function nullUi(): JSX.Element {
   return <UiEntity></UiEntity>
+}
+
+export function setupUi(element?: () => JSX.Element): void {
+  if (element !== undefined) {
+    const uiComponent = (): any => [MainSceneUi(), element()]
+    ReactEcsRenderer.setUiRenderer(uiComponent)
+  } else {
+    ReactEcsRenderer.setUiRenderer(MainSceneUi)
+  }
 }
 
 let sceneIndex = 0
@@ -65,15 +37,15 @@ export function setChangeScene(newSceneIndex: number): void {
     newScene.mainFn()
   }
 
-  if (newScene.ui !== undefined) {
-    ReactEcsRenderer.setUiRenderer(newScene.ui)
-  }
+  setupUi(newScene.ui)
 }
 
 export function MainSceneUi(): JSX.Element {
   return (
     <UiEntity
       uiTransform={{
+        position: { left: 0, top: 0 },
+        positionType: 'absolute',
         height: '100%',
         width: '100%'
       }}
@@ -82,47 +54,32 @@ export function MainSceneUi(): JSX.Element {
         uiBackground={{ color: Color4.Blue() }}
         uiTransform={{
           flexDirection: 'column',
-          height: 160,
+          height: 120,
           width: 350,
-          position: { left: 100, top: 100 }
+          positionType: 'absolute',
+          position: { right: '5%', top: '5%' }
         }}
       >
         <Label
           textAlign="middle-center"
-          value="Main Scene"
+          value="Choose the scene"
           fontSize={24}
           uiTransform={{ margin: 10, width: '100%', height: 36 }}
         />
 
-        <UiEntity uiTransform={{ flexDirection: 'column', height: 50 }}>
-          <Label
-            textAlign="middle-center"
-            value="Choose the scene"
-            fontSize={16}
-            uiTransform={{ margin: 10, width: '100%', height: 36 }}
-          />
-
-          <Dropdown
-            options={scenesOptions.map((item) => item.name)}
-            color={Color4.Red()}
-            font="sans-serif"
-            fontSize={14}
-            selectedIndex={sceneIndex}
-            onChange={setChangeScene}
-            uiTransform={{
-              width: '100%',
-              height: 48,
-              padding: 5
-            }}
-            uiBackground={{ color: Color4.Gray() }}
-          />
-        </UiEntity>
-
-        <Label
-          textAlign="middle-center"
-          value="Press E+F+1 to force this UI"
-          fontSize={16}
-          uiTransform={{ margin: 10, width: '100%', height: 36 }}
+        <Dropdown
+          options={scenesOptions.map((item) => item.name)}
+          color={Color4.Red()}
+          font="sans-serif"
+          fontSize={14}
+          selectedIndex={sceneIndex}
+          onChange={setChangeScene}
+          uiTransform={{
+            width: '100%',
+            height: 48,
+            padding: 5
+          }}
+          uiBackground={{ color: Color4.Gray() }}
         />
       </UiEntity>
     </UiEntity>
