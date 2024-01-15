@@ -12,7 +12,7 @@ import { EasingFunctionKeys } from './utils'
 
 type PbTweenUiProps = {
   tween: PBTween
-  onChange?: (tween: PBTween) => void
+  onChange: (tween: PBTween) => void
 }
 export function PbTweenUi(props: PbTweenUiProps): JSX.Element {
   const { tween, onChange } = props
@@ -26,7 +26,7 @@ export function PbTweenUi(props: PbTweenUiProps): JSX.Element {
         color={Color4.Black()}
         onChange={(newValue) => {
           tween.duration = Number(newValue)
-          onChange?.(tween)
+          onChange(tween)
         }}
         value={`${tween.duration}`}
       />
@@ -37,7 +37,7 @@ export function PbTweenUi(props: PbTweenUiProps): JSX.Element {
         color={Color4.Black()}
         onChange={(newValue) => {
           tween.easingFunction = Number(newValue)
-          onChange?.(tween)
+          onChange(tween)
         }}
         options={EasingFunctionKeys}
         selectedIndex={tween.easingFunction}
@@ -47,7 +47,7 @@ export function PbTweenUi(props: PbTweenUiProps): JSX.Element {
         mode={tween.mode}
         onChange={(mode) => {
           tween.mode = mode
-          onChange?.(tween)
+          onChange(tween)
         }}
       />
     </UiEntity>

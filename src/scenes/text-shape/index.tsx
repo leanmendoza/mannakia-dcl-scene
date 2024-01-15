@@ -139,7 +139,7 @@ export function MainSceneUi(): JSX.Element {
             'TAM_BOTTOM_CENTER',
             'TAM_BOTTOM_RIGHT'
           ]}
-          selectedIndex={state.textShape.font ?? 0}
+          selectedIndex={state.textShape.textAlign ?? 0}
         />
       </UiEntity>
       <UiEntity>

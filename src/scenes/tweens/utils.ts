@@ -37,4 +37,4 @@ export const EasingFunctionObject = {
 
 export const EasingFunctionKeys = Object.keys(EasingFunctionObject)
 
-export const WhiteAlphaBackgroundColor = Color4.create(1, 1, 1, 0.1)
+export const WhiteAlphaBackgroundColor = Color4.create(1, 1, 1, 0.2)

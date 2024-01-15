@@ -10,11 +10,11 @@ import {
 } from '@dcl/sdk/ecs'
 import { Color4, Vector3 } from '@dcl/sdk/math'
 import ReactEcs, {
-  UiEntity,
-  type JSX,
-  Label,
+  Button,
   Dropdown,
-  Button
+  Label,
+  UiEntity,
+  type JSX
 } from '@dcl/sdk/react-ecs'
 import { sceneSystems } from '../../utils/system'
 import { UiBox } from '../../utils/ui/box'
@@ -28,7 +28,10 @@ type State = {
   tweenSequence: PBTweenSequence
   tweenEntity?: Entity
   dirty: boolean
+
   editingTweenIndex: number
+  editingTween: PBTween
+  tweenOptions: string[]
 }
 
 const state: State = {
@@ -47,14 +50,18 @@ const state: State = {
     loop: TweenLoop.TL_YOYO
   },
 
-  editingTweenIndex: 0
+  editingTweenIndex: 0,
+  editingTween: {} as any,
+  tweenOptions: ['Tween']
 }
+state.editingTween = state.tween
 
 export function main(): void {
   sceneSystems.addSystemWithInverval(
     (_dt) => {
       if (!state.dirty) return
 
+      console.log('Changing tween')
       state.dirty = false
       if (state.tweenEntity !== undefined) {
         sceneEntities.removeEntity(state.tweenEntity)
@@ -63,8 +70,11 @@ export function main(): void {
       const tweenEntity = sceneEntities.addEntity()
       state.tweenEntity = tweenEntity
       MeshRenderer.setBox(tweenEntity)
-      Tween.create(tweenEntity, state.tween)
-      TweenSequence.create(tweenEntity, state.tweenSequence)
+      Tween.create(tweenEntity, JSON.parse(JSON.stringify(state.tween)))
+      TweenSequence.create(
+        tweenEntity,
+        JSON.parse(JSON.stringify(state.tweenSequence))
+      )
     },
     0.1,
     'tween-system'
@@ -72,15 +82,6 @@ export function main(): void {
 }
 
 export function MainSceneUi(): JSX.Element {
-  const currentTween =
-    state.editingTweenIndex > 0
-      ? state.tweenSequence.sequence[state.editingTweenIndex - 1]
-      : state.tween
-  const tweenOptions = [
-    'Tween',
-    ...state.tweenSequence.sequence.map((_, index) => `Seq ${index}`)
-  ]
-
   return (
     <UiBox width={500} height={400} uiTransform={{ padding: 10 }}>
       <UiEntity>
@@ -91,8 +92,25 @@ export function MainSceneUi(): JSX.Element {
           color={Color4.Black()}
           onChange={(newValue) => {
             state.editingTweenIndex = Number(newValue)
+            if (state.editingTweenIndex === 0) {
+              state.editingTween = state.tween
+            } else {
+              if (
+                state.editingTweenIndex <= state.tweenSequence.sequence.length
+              ) {
+                state.editingTween =
+                  state.tweenSequence.sequence[state.editingTweenIndex - 1]
+              } else {
+                state.editingTween = state.tween
+                console.error(
+                  "Can't find tween",
+                  state.editingTweenIndex - 1,
+                  state.tweenSequence.sequence.length
+                )
+              }
+            }
           }}
-          options={tweenOptions}
+          options={state.tweenOptions}
           selectedIndex={state.editingTweenIndex}
         />
         <Label value="Loop Mode" />
@@ -111,30 +129,48 @@ export function MainSceneUi(): JSX.Element {
           value="Add Tween"
           uiTransform={{ minHeight: 20, minWidth: 60 }}
           onMouseDown={() => {
-            state.tweenSequence.sequence.push({
-              mode: Tween.Mode.Move({
-                start: Vector3.create(4, 2, 4),
-                end: Vector3.create(4, 2, 12),
-                faceDirection: true
-              }),
-              duration: 2000,
-              easingFunction: EasingFunction.EF_LINEAR
-            })
+            state.tweenSequence.sequence = [
+              ...state.tweenSequence.sequence,
+              {
+                mode: Tween.Mode.Move({
+                  start: Vector3.create(4, 2, 4),
+                  end: Vector3.create(4, 2, 12),
+                  faceDirection: true
+                }),
+                duration: 2000,
+                easingFunction: EasingFunction.EF_LINEAR
+              }
+            ]
+
+            state.tweenOptions = [
+              ...state.tweenOptions,
+              `Seq ${state.tweenSequence.sequence.length}`
+            ]
             state.dirty = true
             console.log('Adding tween', state.tweenSequence.sequence.length)
           }}
         />
+
         <Button
           value="Remove current tween"
           uiTransform={{ minHeight: 20, minWidth: 100 }}
           disabled={state.editingTweenIndex === 0}
           onMouseDown={() => {
             if (state.editingTweenIndex > 0) {
-              state.tweenSequence.sequence.splice(
-                state.editingTweenIndex - 1,
-                1
-              )
+              state.tweenSequence.sequence =
+                state.tweenSequence.sequence.filter(
+                  (_value, index) => index === state.editingTweenIndex
+                )
+              state.tweenOptions = [
+                'Tween',
+                ...state.tweenSequence.sequence.map(
+                  (_value, index) => `Seq ${index + 1}`
+                )
+              ]
+
               state.editingTweenIndex = 0
+              state.editingTween = state.tween
+
               state.dirty = true
             }
           }}
@@ -146,9 +182,15 @@ export function MainSceneUi(): JSX.Element {
         uiBackground={{ color: WhiteAlphaBackgroundColor }}
       >
         <PbTweenUi
-          tween={currentTween as any}
+          tween={state.editingTween}
           onChange={(newValue) => {
-            state.tween = newValue
+            console.log('Tween changing', newValue)
+            if (state.editingTweenIndex > 0) {
+              state.tweenSequence.sequence[state.editingTweenIndex - 1] =
+                newValue
+            } else {
+              state.tween = newValue
+            }
             state.dirty = true
           }}
         />
@@ -156,215 +198,3 @@ export function MainSceneUi(): JSX.Element {
     </UiBox>
   )
 }
-
-//       <UiEntity
-//         uiTransform={{
-//           alignItems: 'stretch'
-
-//         }}
-//       >
-//         <Label value="Text" />
-//         <Input
-//           uiTransform={{ width: '80%', margin: 10, height: 20 }}
-//           uiBackground={{ color: Color4.White() }}
-//           color={Color4.Black()}
-//           onChange={(newValue) => {
-//             state.textShape.text = newValue
-//           }}
-//         />
-//       </UiEntity>
-
-//       <UiEntity>
-//         <Label value="Font" />
-//         <Input
-//           uiTransform={{ margin: 10, height: 20 }}
-//           uiBackground={{ color: Color4.White() }}
-//           color={Color4.Black()}
-//           onChange={(newValue) => {
-//             state.textShape.fontSize = Number(newValue)
-//           }}
-//           value={`${state.textShape.fontSize}`}
-//         />
-//         <Dropdown
-//           uiTransform={{ margin: 10, height: 20 }}
-//           uiBackground={{ color: Color4.White() }}
-//           onChange={(newValue) => {
-//             state.textShape.font = newValue
-//           }}
-//           options={['F_SANS_SERIF', 'F_SERIF', 'F_MONOSPACE']}
-//           selectedIndex={state.textShape.font ?? 0}
-//         />
-//       </UiEntity>
-//       <UiEntity>
-//         <Label value="Align" />
-//         <Dropdown
-//           uiTransform={{ margin: 10, height: 20 }}
-//           uiBackground={{ color: Color4.White() }}
-//           onChange={(newValue) => {
-//             state.textShape.textAlign = newValue
-//           }}
-//           options={[
-//             'TAM_TOP_LEFT',
-//             'TAM_TOP_CENTER',
-//             'TAM_TOP_RIGHT',
-//             'TAM_MIDDLE_LEFT',
-//             'TAM_MIDDLE_CENTER',
-//             'TAM_MIDDLE_RIGHT',
-//             'TAM_BOTTOM_LEFT',
-//             'TAM_BOTTOM_CENTER',
-//             'TAM_BOTTOM_RIGHT'
-//           ]}
-//           selectedIndex={state.textShape.font ?? 0}
-//         />
-//       </UiEntity>
-//       <UiEntity>
-//         <Label value="Size" />
-//         <Input
-//           uiTransform={{ margin: 10, height: 20 }}
-//           uiBackground={{ color: Color4.White() }}
-//           color={Color4.Black()}
-//           onChange={(newValue) => {
-//             state.textShape.width = Number(newValue)
-//           }}
-//           value={`${state.textShape.width}`}
-//         />
-//         <Input
-//           uiTransform={{ margin: 10, height: 20 }}
-//           uiBackground={{ color: Color4.White() }}
-//           color={Color4.Black()}
-//           onChange={(newValue) => {
-//             state.textShape.height = Number(newValue)
-//           }}
-//           value={`${state.textShape.height}`}
-//         />
-//       </UiEntity>
-//       <UiEntity>
-//         <Label value="Padding (top,left,bottom,right)" />
-//         <Input
-//           uiTransform={{ margin: 10, height: 20 }}
-//           uiBackground={{ color: Color4.White() }}
-//           color={Color4.Black()}
-//           onChange={(newValue) => {
-//             state.textShape.paddingTop = Number(newValue)
-//           }}
-//           value={`${state.textShape.paddingTop}`}
-//         />
-//         <Input
-//           uiTransform={{ margin: 10, height: 20 }}
-//           uiBackground={{ color: Color4.White() }}
-//           color={Color4.Black()}
-//           onChange={(newValue) => {
-//             state.textShape.paddingLeft = Number(newValue)
-//           }}
-//           value={`${state.textShape.paddingLeft}`}
-//         />
-//         <Input
-//           uiTransform={{ margin: 10, height: 20 }}
-//           uiBackground={{ color: Color4.White() }}
-//           color={Color4.Black()}
-//           onChange={(newValue) => {
-//             state.textShape.paddingBottom = Number(newValue)
-//           }}
-//           value={`${state.textShape.paddingBottom}`}
-//         />
-//         <Input
-//           uiTransform={{ margin: 10, height: 20 }}
-//           uiBackground={{ color: Color4.White() }}
-//           color={Color4.Black()}
-//           onChange={(newValue) => {
-//             state.textShape.paddingRight = Number(newValue)
-//           }}
-//           value={`${state.textShape.paddingRight}`}
-//         />
-//       </UiEntity>
-//       <UiEntity>
-//         <Label value="Text Color" />
-//         <Dropdown
-//           uiTransform={{ margin: 10, height: 20 }}
-//           uiBackground={{ color: Color4.White() }}
-//           color={Color4.Black()}
-//           onChange={(newValue) => {
-//             state.textColorIndex = Number(newValue)
-//             state.textShape.textColor =
-//               GODOT_ALL_COLORS[GODOT_ALL_COLORS_KEYS[state.textColorIndex]]
-//             console.log({
-//               colorIndex: state.textColorIndex,
-//               color: state.textShape.textColor
-//             })
-//           }}
-//           options={GODOT_ALL_COLORS_KEYS}
-//           selectedIndex={state.textColorIndex}
-//         />
-//         <Label value="Wrapping" />
-//         <Dropdown
-//           uiTransform={{ margin: 10, height: 20 }}
-//           uiBackground={{ color: Color4.White() }}
-//           color={Color4.Black()}
-//           onChange={(newValue) => {
-//             state.textShape.textWrapping = Number(newValue) === 1
-//           }}
-//           options={['NO', 'YES']}
-//           selectedIndex={state.textShape.textWrapping === true ? 1 : 0}
-//         />
-//       </UiEntity>
-
-// export function main() {
-//   {
-//     const box = engine.addEntity()
-//     Transform.create(box, {
-//       position: Vector3.create(4, 2, 4),
-//       scale: Vector3.create(1, 1, 1)
-//     })
-//     MeshRenderer.setBox(box)
-//     MeshCollider.setBox(box)
-
-//     Tween.create(box, {
-//       mode: Tween.Mode.Move({
-//         start: Vector3.create(4, 2, 4),
-//         end: Vector3.create(4, 2, 12),
-//         faceDirection: true
-//       }),
-//       duration: 2000,
-//       easingFunction: EasingFunction.EF_LINEAR
-//     })
-
-//     TweenSequence.create(box, {
-//       sequence: [],
-//       loop: TweenLoop.TL_YOYO
-//     })
-//   }
-//   {
-//     const box = engine.addEntity()
-//     Transform.create(box, {
-//       position: Vector3.create(8, 2, 8),
-//       scale: Vector3.create(1, 1, 1)
-//     })
-//     MeshRenderer.setBox(box)
-//     MeshCollider.setBox(box)
-
-//     Tween.create(box, {
-//       mode: Tween.Mode.Rotate({
-//         start: Quaternion.fromEulerDegrees(0.0, 0.0, 0.0),
-//         end: Quaternion.fromEulerDegrees(0.0, 180.0, 0.0)
-//       }),
-//       duration: 2000,
-//       easingFunction: EasingFunction.EF_LINEAR
-//     })
-
-//     TweenSequence.create(box, {
-//       sequence: [],
-//       loop: TweenLoop.TL_RESTART
-//     })
-//   }
-
-//   {
-//     const box = engine.addEntity()
-//     Transform.create(box, {
-//       position: Vector3.create(12, 2, 8),
-//       scale: Vector3.create(1, 1, 1)
-//     })
-//     MeshRenderer.setBox(box)
-//     MeshCollider.setBox(box)
-
-//   }
-// }

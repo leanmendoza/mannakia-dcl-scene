@@ -7,12 +7,13 @@ import ReactEcs, {
   type JSX,
   Input
 } from '@dcl/sdk/react-ecs'
+import { WhiteAlphaBackgroundColor } from './utils'
 
 const TweenMode = ['move', 'rotate', 'scale']
 
 type PbTweenUiModeProps = {
   mode: PBTween['mode']
-  onChange?: (mode: PBTween['mode']) => void
+  onChange: (mode: PBTween['mode']) => void
 }
 
 export function Vector3Ui(props: {
@@ -141,6 +142,127 @@ type TweenModeExtra = {
   move?: Move
 }
 
+function ModeMoveUi(props: {
+  mode: Move
+  onChange: (mode: Move) => void
+}): JSX.Element {
+  const { mode, onChange } = props
+  return (
+    <UiEntity
+      uiBackground={{ color: WhiteAlphaBackgroundColor }}
+      uiTransform={{ flexDirection: 'column' }}
+    >
+      <UiEntity>
+        <Label value="Start" uiTransform={{ height: 16, width: 'auto' }} />
+        <Vector3Ui
+          value={mode.start ?? Vector3.Zero()}
+          onChange={(newValue) => {
+            mode.start = newValue
+            onChange(mode)
+          }}
+        />
+      </UiEntity>
+
+      <UiEntity>
+        <Label value="End" uiTransform={{ height: 16, width: 'auto' }} />
+        <Vector3Ui
+          value={mode.end ?? Vector3.One()}
+          onChange={(newValue) => {
+            mode.end = newValue
+            onChange(mode)
+          }}
+        />
+      </UiEntity>
+      <UiEntity>
+        <Label
+          value="FaceDirection"
+          uiTransform={{ height: 16, width: 'auto' }}
+        />
+        <Dropdown
+          uiTransform={{ margin: 10, height: 20 }}
+          uiBackground={{ color: Color4.White() }}
+          color={Color4.Black()}
+          onChange={(newValue) => {
+            mode.faceDirection = newValue === 1
+            onChange(mode)
+          }}
+          options={['NO', 'YES']}
+          selectedIndex={mode.faceDirection === true ? 1 : 0}
+        />
+      </UiEntity>
+    </UiEntity>
+  )
+}
+
+function ModeScaleUi(props: {
+  mode: Scale
+  onChange: (mode: Scale) => void
+}): JSX.Element {
+  const { mode, onChange } = props
+  return (
+    <UiEntity
+      uiBackground={{ color: WhiteAlphaBackgroundColor }}
+      uiTransform={{ flexDirection: 'column' }}
+    >
+      <UiEntity>
+        <Label value="Start" uiTransform={{ height: 16, width: 'auto' }} />
+        <Vector3Ui
+          value={mode.start ?? Vector3.Zero()}
+          onChange={(newValue) => {
+            mode.start = newValue
+            onChange(mode)
+          }}
+        />
+      </UiEntity>
+
+      <UiEntity>
+        <Label value="End" uiTransform={{ height: 16, width: 'auto' }} />
+        <Vector3Ui
+          value={mode.end ?? Vector3.One()}
+          onChange={(newValue) => {
+            mode.end = newValue
+            onChange(mode)
+          }}
+        />
+      </UiEntity>
+    </UiEntity>
+  )
+}
+
+function ModeRotateUi(props: {
+  mode: Rotate
+  onChange: (mode: Rotate) => void
+}): JSX.Element {
+  const { mode, onChange } = props
+  return (
+    <UiEntity
+      uiBackground={{ color: WhiteAlphaBackgroundColor }}
+      uiTransform={{ flexDirection: 'column' }}
+    >
+      <UiEntity>
+        <Label value="Start" uiTransform={{ height: 16, width: 'auto' }} />
+        <QuaternionUi
+          value={mode.start ?? Quaternion.Identity()}
+          onChange={(newValue) => {
+            mode.start = newValue
+            onChange(mode)
+          }}
+        />
+      </UiEntity>
+
+      <UiEntity>
+        <Label value="End" uiTransform={{ height: 16, width: 'auto' }} />
+        <QuaternionUi
+          value={mode.end ?? Quaternion.Identity()}
+          onChange={(newValue) => {
+            mode.end = newValue
+            onChange(mode)
+          }}
+        />
+      </UiEntity>
+    </UiEntity>
+  )
+}
 export function PbTweenUiMode(props: PbTweenUiModeProps): JSX.Element {
   const { mode, onChange } = props
   const modeCopy: TweenModeExtra = { ...mode } as any
@@ -149,7 +271,7 @@ export function PbTweenUiMode(props: PbTweenUiModeProps): JSX.Element {
   return (
     <UiEntity
       uiTransform={{ flexDirection: 'column' }}
-      uiBackground={{ color: Color4.create(1.0, 1.0, 1.0, 0.1) }}
+      uiBackground={{ color: WhiteAlphaBackgroundColor }}
     >
       <UiEntity>
         <Label value="Mode" uiTransform={{ height: 16, width: 'auto' }} />
@@ -159,7 +281,23 @@ export function PbTweenUiMode(props: PbTweenUiModeProps): JSX.Element {
           color={Color4.Black()}
           onChange={(newValue) => {
             modeCopy.$case = TweenMode[newValue] as any
-            onChange?.(mode)
+            const newMode = modeCopy.$case ?? 'move'
+            if (modeCopy[newMode] === undefined) {
+              if (newMode === 'move')
+                modeCopy.move = {
+                  start: Vector3.Zero(),
+                  end: Vector3.One(),
+                  faceDirection: false
+                }
+              if (newMode === 'scale')
+                modeCopy.scale = { start: Vector3.Zero(), end: Vector3.One() }
+              if (newMode === 'rotate')
+                modeCopy.rotate = {
+                  start: Quaternion.Identity(),
+                  end: Quaternion.fromEulerDegrees(0, 90, 0)
+                }
+            }
+            onChange(modeCopy as any)
           }}
           options={TweenMode}
           selectedIndex={TweenMode.indexOf(currentModeId)}
@@ -167,82 +305,42 @@ export function PbTweenUiMode(props: PbTweenUiModeProps): JSX.Element {
       </UiEntity>
       <UiEntity>
         {currentModeId === 'move' && (
-          <UiEntity
-            uiBackground={{ color: Color4.create(1.0, 1.0, 1.0, 0.1) }}
-            uiTransform={{ flexDirection: 'column' }}
-          >
-            <UiEntity>
-              <Label
-                value="Start"
-                uiTransform={{ height: 16, width: 'auto' }}
-              />
-              <Vector3Ui
-                value={
-                  modeCopy.move !== undefined
-                    ? modeCopy.move.start ?? Vector3.Zero()
-                    : Vector3.Zero()
-                }
-                onChange={(newValue) => {
-                  if (modeCopy.move === undefined) {
-                    modeCopy.move = { start: newValue, end: Vector3.Zero() }
-                  } else {
-                    modeCopy.move.start = newValue
-                  }
-                  onChange?.(modeCopy as PBTween['mode'])
-                }}
-              />
-            </UiEntity>
-
-            <UiEntity>
-              <Label value="End" uiTransform={{ height: 16, width: 'auto' }} />
-              <Vector3Ui
-                value={
-                  modeCopy.move !== undefined
-                    ? modeCopy.move.end ?? Vector3.Zero()
-                    : Vector3.Zero()
-                }
-                onChange={(newValue) => {
-                  if (modeCopy.move === undefined) {
-                    modeCopy.move = { end: newValue, start: Vector3.Zero() }
-                  } else {
-                    modeCopy.move.end = newValue
-                  }
-                  onChange?.(modeCopy as PBTween['mode'])
-                }}
-              />
-            </UiEntity>
-            <UiEntity>
-              <Label
-                value="FaceDirection"
-                uiTransform={{ height: 16, width: 'auto' }}
-              />
-              <Dropdown
-                uiTransform={{ margin: 10, height: 20 }}
-                uiBackground={{ color: Color4.White() }}
-                color={Color4.Black()}
-                onChange={(newValue) => {
-                  if (modeCopy.move === undefined) {
-                    modeCopy.move = {
-                      faceDirection: newValue === 1,
-                      end: Vector3.One(),
-                      start: Vector3.Zero()
-                    }
-                  } else {
-                    modeCopy.move.faceDirection = newValue === 1
-                  }
-                  onChange?.(modeCopy as PBTween['mode'])
-                }}
-                options={['NO', 'YES']}
-                selectedIndex={
-                  modeCopy.move !== undefined
-                    ? modeCopy.move.faceDirection === true
-                      ? 1
-                      : 0
-                    : 0
-                }
-              />
-            </UiEntity>
-          </UiEntity>
+          <ModeMoveUi
+            mode={
+              modeCopy.move ?? {
+                start: Vector3.Zero(),
+                end: Vector3.One(),
+                faceDirection: false
+              }
+            }
+            onChange={(mode) => {
+              modeCopy.move = mode
+              modeCopy.$case = 'move'
+              onChange(modeCopy as any)
+            }}
+          />
+        )}
+        {currentModeId === 'scale' && (
+          <ModeScaleUi
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            mode={modeCopy.scale!}
+            onChange={(mode) => {
+              modeCopy.scale = mode
+              modeCopy.$case = 'scale'
+              onChange(modeCopy as any)
+            }}
+          />
+        )}
+        {currentModeId === 'rotate' && (
+          <ModeRotateUi
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            mode={modeCopy.rotate!}
+            onChange={(mode) => {
+              modeCopy.move = mode
+              modeCopy.$case = 'rotate'
+              onChange(modeCopy as any)
+            }}
+          />
         )}
       </UiEntity>
     </UiEntity>
