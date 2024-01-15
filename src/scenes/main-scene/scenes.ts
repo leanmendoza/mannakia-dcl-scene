@@ -13,6 +13,7 @@ import {
   MainSceneUi as TextShapeApiUi
 } from '../text-shape'
 import { MainSceneUi as TweenSceneUi, main as TweenMain } from '../tweens'
+import { main as GltfTest } from '../gltf-test'
 
 export type SceneItem = {
   name: string
@@ -50,5 +51,10 @@ export const scenesOptions: SceneItem[] = [
     name: 'Tween test',
     mainFn: TweenMain,
     ui: TweenSceneUi
+  },
+  {
+    name: 'Gltf test',
+    mainFn: GltfTest,
+    ui: undefined
   }
 ]
