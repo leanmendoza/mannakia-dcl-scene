@@ -12,6 +12,7 @@ import {
   main as TextShapeApiTestMain,
   MainSceneUi as TextShapeApiUi
 } from '../text-shape'
+import { MainSceneUi as TweenSceneUi, main as TweenMain } from '../tweens'
 
 export type SceneItem = {
   name: string
@@ -44,5 +45,10 @@ export const scenesOptions: SceneItem[] = [
     name: 'Text Shape test',
     mainFn: TextShapeApiTestMain,
     ui: TextShapeApiUi
+  },
+  {
+    name: 'Tween test',
+    mainFn: TweenMain,
+    ui: TweenSceneUi
   }
 ]

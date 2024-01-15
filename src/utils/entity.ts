@@ -3,6 +3,7 @@ import { engine } from '@dcl/sdk/ecs'
 
 function createEntityManagerFunction(): {
   addEntity: () => Entity
+  removeEntity: (entity: Entity) => void
   clean: () => void
   isEmpty: () => boolean
   entities: () => Entity[]
@@ -14,6 +15,10 @@ function createEntityManagerFunction(): {
       const newEntity = engine.addEntity()
       arr.push(newEntity)
       return newEntity
+    },
+    removeEntity(entity: Entity) {
+      engine.removeEntity(entity)
+      arr = arr.filter((e) => e !== entity)
     },
     clean() {
       for (const entity of arr) {
