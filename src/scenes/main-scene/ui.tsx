@@ -1,11 +1,5 @@
 import { Color4 } from '@dcl/sdk/math'
-import ReactEcs, {
-  Label,
-  UiEntity,
-  type JSX,
-  Dropdown,
-  ReactEcsRenderer
-} from '@dcl/sdk/react-ecs'
+import ReactEcs, { Label, UiEntity, type JSX, Dropdown, ReactEcsRenderer } from '@dcl/sdk/react-ecs'
 import { sceneEntities } from '../../utils/entity'
 import { sceneSystems } from '../../utils/system'
 import { scenesOptions } from './scenes'
@@ -14,9 +8,10 @@ function nullUi(): JSX.Element {
   return <UiEntity></UiEntity>
 }
 
-export function setupUi(element?: () => JSX.Element): void {
+export function setupUi(element?: () => JSX.Element, extended?: boolean): void {
   if (element !== undefined) {
-    const uiComponent = (): any => [MainSceneUi(), element()]
+    const uiComponent =
+      extended === true ? (): any => [MainSceneUi(), ...(element as any)()] : (): any => [MainSceneUi(), element()]
     ReactEcsRenderer.setUiRenderer(uiComponent)
   } else {
     ReactEcsRenderer.setUiRenderer(MainSceneUi)
@@ -37,7 +32,7 @@ export function setChangeScene(newSceneIndex: number): void {
     newScene.mainFn()
   }
 
-  setupUi(newScene.ui)
+  setupUi(newScene.ui, newScene.extended)
 }
 
 export function MainSceneUi(): JSX.Element {

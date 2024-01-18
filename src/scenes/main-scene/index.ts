@@ -1,5 +1,6 @@
-import { setupUi } from './ui'
+import { setChangeScene, setupUi } from './ui'
 
 export function main(): void {
   setupUi(undefined)
+  setChangeScene(7)
 }
