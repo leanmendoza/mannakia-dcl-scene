@@ -13,7 +13,8 @@ let stateEntity: Entity | undefined
 export enum CurrentStateEnum {
   CSE_INITIAL = 'CSE_INITIAL',
   CSE_POPUP = 'CSE_POPUP',
-  CSE_FLEXTEST = 'CSE_FLEXTEST'
+  CSE_FLEXTEST = 'CSE_FLEXTEST',
+  CSE_BACKGROUND = 'CSE_BACKGROUND'
 }
 
 const UiTestStateSchema = {
@@ -33,7 +34,9 @@ function getStateEntity(): Entity {
     engine.getEntityState(stateEntity) !== EntityState.UsedEntity
   ) {
     stateEntity = sceneEntities.addEntity()
-    UiTestState.create(stateEntity, { current: CurrentStateEnum.CSE_FLEXTEST })
+    UiTestState.create(stateEntity, {
+      current: CurrentStateEnum.CSE_BACKGROUND
+    })
   }
   return stateEntity
 }

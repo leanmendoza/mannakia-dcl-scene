@@ -85,7 +85,8 @@ function UiTest(props: { state: UiTestStateType }): JSX.Element {
     [CurrentStateEnum.CSE_POPUP]: () => (
       <PopUpUiTest canvasInfo={getUiTestState().canvasInfo} />
     ),
-    [CurrentStateEnum.CSE_FLEXTEST]: () => <FlexBoxTest />
+    [CurrentStateEnum.CSE_FLEXTEST]: () => <FlexBoxTest />,
+    [CurrentStateEnum.CSE_BACKGROUND]: () => <BackgroundTest />
   }
   if (uiStateUi[props.state.current] !== undefined) {
     return uiStateUi[props.state.current]()
@@ -225,7 +226,6 @@ function MainCanvas(props: any): JSX.Element {
   )
 }
 
-// Function to demonstrate basic positioning
 function FlexBoxTest(): JSX.Element {
   return (
     <MainCanvas>
@@ -341,5 +341,164 @@ function FlexBoxTest(): JSX.Element {
         </UiItem>
       </UiItem>
     </MainCanvas>
+  )
+}
+
+const backgroundTextureTests = [
+  {
+    description: 'Stretch',
+    value: (
+      <UiItem
+        texture={{
+          src: 'assets/9slice.png',
+          wrapMode: 'repeat',
+          filterMode: 'bi-linear'
+        }}
+        textureMode="stretch"
+        width={'100%'}
+        height={'100%'}
+      />
+    )
+  },
+  {
+    description: 'Stretch with colored',
+    value: (
+      <UiItem
+        texture={{
+          src: 'assets/9slice.png',
+          wrapMode: 'repeat',
+          filterMode: 'bi-linear'
+        }}
+        textureMode="stretch"
+        width={'100%'}
+        height={'100%'}
+        color={Color4.Blue()}
+      />
+    )
+  },
+  {
+    description: 'Stretch with uvs',
+    value: (
+      <UiItem
+        texture={{
+          src: 'assets/9slice.png',
+          wrapMode: 'repeat',
+          filterMode: 'bi-linear'
+        }}
+        textureMode="stretch"
+        width={'100%'}
+        height={'100%'}
+        uvs={[0, 0, 0.5, 0.5]}
+      />
+    )
+  },
+  {
+    description: 'Using avatar texture',
+    value: (
+      <UiItem
+        avatarTexture={{
+          userId: '0xa24793319d07844ebbee32f76b41e85bf81321d4'
+        }}
+        uvs={[0, 0, 1, 1]}
+        width={'100%'}
+        height={'100%'}
+      />
+    )
+  },
+  {
+    description: 'NineSlices with default textureSlices',
+    value: (
+      <UiItem
+        texture={{
+          src: 'assets/9slice.png',
+          wrapMode: 'repeat',
+          filterMode: 'bi-linear'
+        }}
+        textureMode="nine-slices"
+        width={'100%'}
+        height={'100%'}
+      />
+    )
+  },
+  {
+    description: 'NineSlices with right values',
+    value: (
+      <UiItem
+        texture={{
+          src: 'assets/9slice.png',
+          wrapMode: 'repeat',
+          filterMode: 'bi-linear'
+        }}
+        textureMode="nine-slices"
+        textureSlices={{
+          top: 115 / 256.0,
+          right: 115 / 256.0,
+          bottom: 115 / 256.0,
+          left: 115 / 256.0
+        }}
+        width={'100%'}
+        height={'100%'}
+      />
+    )
+  },
+  {
+    description: 'Smaller NineSlices with right values',
+    value: (
+      <UiItem
+        texture={{
+          src: 'assets/9slice.png',
+          wrapMode: 'repeat',
+          filterMode: 'bi-linear'
+        }}
+        textureMode="nine-slices"
+        textureSlices={{
+          top: 115 / 256.0,
+          right: 115 / 256.0,
+          bottom: 115 / 256.0,
+          left: 115 / 256.0
+        }}
+        width={'50%'}
+        height={'50%'}
+      />
+    )
+  }
+]
+
+let backgroundTextureTestIndex = 0
+function BackgroundTest(): JSX.Element {
+  return (
+    <UiItem
+      position={{ left: 0, top: 0 }}
+      positionType="absolute"
+      height="100%"
+      width="100%"
+      flexDirection="column"
+      color={Color4.create(1, 1, 1, 0.1)}
+    >
+      <UiItem
+        flexDirection={'column'}
+        color={Color4.Blue()}
+        width="50%"
+        position={{ top: '25%', left: '25%' }}
+      >
+        <Dropdown
+          options={backgroundTextureTests.map((value) => value.description)}
+          selectedIndex={backgroundTextureTestIndex}
+          onChange={(value: number) => {
+            backgroundTextureTestIndex = value
+          }}
+          uiTransform={{ width: '100%', height: 40 }}
+        />
+      </UiItem>
+      <UiItem
+        flexDirection={'column'}
+        color={Color4.Blue()}
+        width="50%"
+        height="50%"
+        position={{ top: '25%', left: '25%' }}
+      >
+        {backgroundTextureTests[backgroundTextureTestIndex].value}
+      </UiItem>
+    </UiItem>
   )
 }
