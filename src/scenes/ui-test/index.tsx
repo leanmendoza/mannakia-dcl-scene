@@ -1,7 +1,18 @@
-import { UiCanvasInformation, engine, type PBUiCanvasInformation } from '@dcl/sdk/ecs'
+import {
+  UiCanvasInformation,
+  engine,
+  type PBUiCanvasInformation
+} from '@dcl/sdk/ecs'
 import { Color4 } from '@dcl/sdk/math'
-import ReactEcs, { Button, Dropdown, Label, UiEntity, type JSX } from '@dcl/sdk/react-ecs'
+import ReactEcs, {
+  Button,
+  Dropdown,
+  Label,
+  UiEntity,
+  type JSX
+} from '@dcl/sdk/react-ecs'
 import { sceneSystems } from '../../utils/system'
+import { UiItem } from '../../utils/ui/item'
 import {
   CurrentStateEnum,
   getUiTestState,
@@ -16,7 +27,9 @@ export function main(): void {
       console.log('checking')
       const maybeNewCanvasInfo = UiCanvasInformation.get(engine.RootEntity)
       const currentCanvasInfo = getUiTestState().canvasInfo
-      if (JSON.stringify(maybeNewCanvasInfo) !== JSON.stringify(currentCanvasInfo)) {
+      if (
+        JSON.stringify(maybeNewCanvasInfo) !== JSON.stringify(currentCanvasInfo)
+      ) {
         setUiTestStateCanvasInfo({ ...maybeNewCanvasInfo })
       }
     },
@@ -26,7 +39,10 @@ export function main(): void {
 }
 
 export function UI(): JSX.Element[] {
-  return [<UiSelector state={getUiTestState()} />, <UiTest state={getUiTestState()} />]
+  return [
+    <UiSelector state={getUiTestState()} />,
+    <UiTest state={getUiTestState()} />
+  ]
 }
 
 function UiSelector(props: { state: UiTestStateType }): JSX.Element {
@@ -39,10 +55,19 @@ function UiSelector(props: { state: UiTestStateType }): JSX.Element {
         width: '100%'
       }}
     >
-      <Label value="Select UI" fontSize={32} textAlign="middle-center" uiTransform={{ width: '100%', height: 40 }} />
+      <Label
+        value="Select UI"
+        fontSize={32}
+        textAlign="middle-center"
+        uiTransform={{ width: '100%', height: 40 }}
+      />
       <Dropdown
         options={Object.values(CurrentStateEnum)}
-        selectedIndex={Object.values(CurrentStateEnum).findIndex((value) => value === props.state.current) ?? 0}
+        selectedIndex={
+          Object.values(CurrentStateEnum).findIndex(
+            (value) => value === props.state.current
+          ) ?? 0
+        }
         onChange={(value: number) => {
           setUiTestStateCurrent(Object.values(CurrentStateEnum)[value])
         }}
@@ -54,9 +79,13 @@ function UiSelector(props: { state: UiTestStateType }): JSX.Element {
 
 function UiTest(props: { state: UiTestStateType }): JSX.Element {
   const uiStateUi = {
-    [CurrentStateEnum.CSE_INITIAL]: () => <InitialUi canvasInfo={getUiTestState().canvasInfo} />,
-    [CurrentStateEnum.CSE_POPUP]: () => <PopUpUiTest canvasInfo={getUiTestState().canvasInfo} />,
-    [CurrentStateEnum.CSE_BASIC]: () => <BasicPositioning />
+    [CurrentStateEnum.CSE_INITIAL]: () => (
+      <InitialUi canvasInfo={getUiTestState().canvasInfo} />
+    ),
+    [CurrentStateEnum.CSE_POPUP]: () => (
+      <PopUpUiTest canvasInfo={getUiTestState().canvasInfo} />
+    ),
+    [CurrentStateEnum.CSE_FLEXTEST]: () => <FlexBoxTest />
   }
   if (uiStateUi[props.state.current] !== undefined) {
     return uiStateUi[props.state.current]()
@@ -102,7 +131,9 @@ function InitialUi(props: { canvasInfo: PBUiCanvasInformation }): JSX.Element {
   )
 }
 
-function PopUpUiTest(props: { canvasInfo: PBUiCanvasInformation }): JSX.Element {
+function PopUpUiTest(props: {
+  canvasInfo: PBUiCanvasInformation
+}): JSX.Element {
   return (
     <UiEntity
       uiTransform={{
@@ -122,7 +153,11 @@ function PopUpUiTest(props: { canvasInfo: PBUiCanvasInformation }): JSX.Element 
         }}
         uiTransform={{ width: 400, height: 300, flexDirection: 'column' }}
       >
-        <Label uiTransform={{ height: '15%', justifyContent: 'flex-end' }} fontSize={36} value="Title popup" />
+        <Label
+          uiTransform={{ height: '15%', justifyContent: 'flex-end' }}
+          fontSize={36}
+          value="Title popup"
+        />
         <Label
           fontSize={16}
           uiTransform={{ width: '100%', height: '65%' }}
@@ -131,7 +166,13 @@ function PopUpUiTest(props: { canvasInfo: PBUiCanvasInformation }): JSX.Element 
             40
           )}
         />
-        <UiEntity uiTransform={{ height: '20%', justifyContent: 'center', alignItems: 'flex-start' }}>
+        <UiEntity
+          uiTransform={{
+            height: '20%',
+            justifyContent: 'center',
+            alignItems: 'flex-start'
+          }}
+        >
           <Button
             uiTransform={{ width: '40%' }}
             value="Accept"
@@ -172,93 +213,133 @@ function wrapText(text: string, maxLineLength: number): string {
 
 function MainCanvas(props: any): JSX.Element {
   return (
-    <UiEntity
-      uiTransform={{
-        position: { left: 0, top: 0 },
-        positionType: 'absolute',
-        height: '100%',
-        width: '100%'
-      }}
-      uiBackground={{ color: Color4.create(1, 1, 1, 0.1) }}
+    <UiItem
+      position={{ left: 0, top: 0 }}
+      positionType="absolute"
+      height="100%"
+      width="100%"
+      color={Color4.create(1, 1, 1, 0.1)}
     >
       {props.children}
-    </UiEntity>
+    </UiItem>
   )
 }
 
 // Function to demonstrate basic positioning
-function BasicPositioning(): JSX.Element {
+function FlexBoxTest(): JSX.Element {
   return (
     <MainCanvas>
-      <UiEntity uiTransform={{ position: { top: 20, left: 20 } }} uiBackground={{ color: Color4.Gray() }}>
-        <Label value="Basic Positioning" />
-      </UiEntity>
+      <UiItem
+        flexDirection={'column'}
+        color={Color4.Blue()}
+        width="50%"
+        height="50%"
+        position={{ top: '25%', left: '25%' }}
+      >
+        <UiItem flexGrow={2}>
+          <UiItem color={Color4.Yellow()} width={'25%'} />
+          <UiItem color={Color4.White()} width={'25%'} />
+          <UiItem color={Color4.Black()} width={'25%'} />
+        </UiItem>
+        <UiItem flexGrow={1}>
+          <UiItem color={Color4.Red()} width={'25%'} />
+          <UiItem color={Color4.Purple()} flexGrow={1} />
+          <UiItem color={Color4.Green()} width={'25%'} />
+        </UiItem>
+        <UiItem flexGrow={1}>
+          <UiItem color={Color4.Purple()} width={'5%'} />
+          <UiItem color={Color4.Green()} flexGrow={1} />
+          <UiItem color={Color4.White()} flexGrow={4} />
+        </UiItem>
+        <UiItem color={Color4.Gray()} flexGrow={5}>
+          <UiItem flexGrow={1} flexDirection={'column'}>
+            <UiItem
+              color={Color4.Yellow()}
+              height={'10%'}
+              justifyContent="center"
+            >
+              <UiItem color={Color4.Green()} width={'10%'} height={'40%'} />
+              <UiItem color={Color4.Black()} width={'10%'} height={'80%'} />
+              <UiItem color={Color4.Purple()} width={'10%'} height={'60%'} />
+            </UiItem>
+            <UiItem
+              color={Color4.Red()}
+              height={'10%'}
+              justifyContent="flex-end"
+            >
+              <UiItem color={Color4.Green()} width={'10%'} height={'40%'} />
+              <UiItem color={Color4.Black()} width={'10%'} height={'80%'} />
+              <UiItem color={Color4.Purple()} width={'10%'} height={'60%'} />
+            </UiItem>
+            <UiItem
+              color={Color4.Yellow()}
+              height={'10%'}
+              justifyContent="flex-start"
+            >
+              <UiItem color={Color4.Green()} width={'10%'} height={'40%'} />
+              <UiItem color={Color4.Black()} width={'10%'} height={'80%'} />
+              <UiItem color={Color4.Purple()} width={'10%'} height={'60%'} />
+            </UiItem>
+            <UiItem
+              color={Color4.Red()}
+              height={'10%'}
+              justifyContent="space-around"
+            >
+              <UiItem color={Color4.Green()} width={'10%'} height={'40%'} />
+              <UiItem color={Color4.Black()} width={'10%'} height={'80%'} />
+              <UiItem color={Color4.Purple()} width={'10%'} height={'60%'} />
+            </UiItem>
+            <UiItem
+              color={Color4.Yellow()}
+              height={'10%'}
+              justifyContent="space-between"
+            >
+              <UiItem color={Color4.Green()} width={'10%'} height={'40%'} />
+              <UiItem color={Color4.Black()} width={'10%'} height={'80%'} />
+              <UiItem color={Color4.Purple()} width={'10%'} height={'60%'} />
+            </UiItem>
+            <UiItem
+              color={Color4.Red()}
+              height={'10%'}
+              justifyContent="space-evenly"
+            >
+              <UiItem color={Color4.Green()} width={'10%'} height={'40%'} />
+              <UiItem color={Color4.Black()} width={'10%'} height={'80%'} />
+              <UiItem color={Color4.Purple()} width={'10%'} height={'60%'} />
+            </UiItem>
+            <UiItem
+              color={Color4.Yellow()}
+              height={'10%'}
+              justifyContent="center"
+              alignItems="center"
+            >
+              <UiItem color={Color4.Green()} width={'10%'} height={'40%'} />
+              <UiItem color={Color4.Black()} width={'10%'} height={'80%'} />
+              <UiItem color={Color4.Purple()} width={'10%'} height={'60%'} />
+            </UiItem>
+            <UiItem
+              color={Color4.Red()}
+              height={'10%'}
+              justifyContent="center"
+              alignItems="flex-end"
+            >
+              <UiItem color={Color4.Green()} width={'10%'} height={'40%'} />
+              <UiItem color={Color4.Black()} width={'10%'} height={'80%'} />
+              <UiItem color={Color4.Purple()} width={'10%'} height={'60%'} />
+            </UiItem>
+            <UiItem
+              color={Color4.Yellow()}
+              height={'10%'}
+              justifyContent="center"
+              alignItems="stretch"
+            >
+              <UiItem color={Color4.Green()} width={'10%'} height={'40%'} />
+              <UiItem color={Color4.Black()} width={'10%'} height={'80%'} />
+              <UiItem color={Color4.Purple()} width={'10%'} height={'60%'} />
+            </UiItem>
+          </UiItem>
+        </UiItem>
+      </UiItem>
     </MainCanvas>
   )
 }
-
-// // Function to demonstrate flex container with flexDirection
-// function FlexColumnCenter(): JSX.Element {
-//   return (
-//     <UiEntity uiTransform={{ flexDirection: 'column', alignItems: 'center' }} uiBackground={{ color: Color4.Blue() }}>
-//       <Label value="Flex Column Center" />
-//     </UiEntity>
-//   )
-// }
-
-// // Function to demonstrate background color
-// function BackgroundColor(): JSX.Element {
-//   return (
-//     <UiEntity uiTransform={{ width: 200, height: 100 }} uiBackground={{ color: Color4.Green() }}>
-//       <Label value="Background Color" />
-//     </UiEntity>
-//   )
-// }
-
-// // Function to demonstrate flex container with justifyContent
-// function FlexRowSpaceBetween(): JSX.Element {
-//   return (
-//     <UiEntity
-//       uiTransform={{ flexDirection: 'row', justifyContent: 'space-between' }}
-//       uiBackground={{ color: Color4.Yellow() }}
-//     >
-//       <Button value="Button 1" />
-//       <Button value="Button 2" />
-//     </UiEntity>
-//   )
-// }
-
-// // Function to demonstrate combined properties
-// function AbsolutePositioning(): JSX.Element {
-//   return (
-//     <UiEntity
-//       uiTransform={{
-//         positionType: 'absolute',
-//         top: 50,
-//         left: 50,
-//         width: '50%',
-//         height: 150,
-//         flexDirection: 'row',
-//         alignItems: 'center',
-//         justifyContent: 'space-around'
-//       }}
-//       uiBackground={{ color: Color4.Red() }}
-//     >
-//       <Label value="Absolute Positioning" />
-//       <Button value="Submit" />
-//     </UiEntity>
-//   )
-// }
-
-// // Usage of the functions
-// function UiTransformVariantsTest(): JSX.Element {
-//   return (
-//     <div>
-//       {BasicPositioning()}
-//       {FlexColumnCenter()}
-//       {BackgroundColor()}
-//       {FlexRowSpaceBetween()}
-//       {AbsolutePositioning()}
-//     </div>
-//   )
-// }

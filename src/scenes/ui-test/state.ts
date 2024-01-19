@@ -13,11 +13,14 @@ let stateEntity: Entity | undefined
 export enum CurrentStateEnum {
   CSE_INITIAL = 'CSE_INITIAL',
   CSE_POPUP = 'CSE_POPUP',
-  CSE_BASIC = 'CSE_BASIC'
+  CSE_FLEXTEST = 'CSE_FLEXTEST'
 }
 
 const UiTestStateSchema = {
-  current: Schemas.EnumString<CurrentStateEnum>(CurrentStateEnum, CurrentStateEnum.CSE_INITIAL),
+  current: Schemas.EnumString<CurrentStateEnum>(
+    CurrentStateEnum,
+    CurrentStateEnum.CSE_INITIAL
+  ),
   canvasInfo: UiCanvasInformation.schema
 }
 
@@ -25,9 +28,12 @@ const UiTestState = engine.defineComponent('uiTestState', UiTestStateSchema)
 export type UiTestStateType = ReturnType<typeof UiTestState.create>
 
 function getStateEntity(): Entity {
-  if (stateEntity === undefined || engine.getEntityState(stateEntity) !== EntityState.UsedEntity) {
+  if (
+    stateEntity === undefined ||
+    engine.getEntityState(stateEntity) !== EntityState.UsedEntity
+  ) {
     stateEntity = sceneEntities.addEntity()
-    UiTestState.create(stateEntity, { current: CurrentStateEnum.CSE_POPUP })
+    UiTestState.create(stateEntity, { current: CurrentStateEnum.CSE_FLEXTEST })
   }
   return stateEntity
 }
