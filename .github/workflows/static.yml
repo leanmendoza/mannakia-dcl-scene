@@ -37,7 +37,7 @@ jobs:
         with:
           node-version: 18.x
       - name: install dependencies
-        run: npm i @dcl/sdk@protocol-squad
+        run: npm i @dcl/sdk
       - name: build
         run: npm run build
       - name: export-static
