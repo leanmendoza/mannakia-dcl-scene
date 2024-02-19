@@ -16,6 +16,7 @@ import { MainSceneUi as TweenSceneUi, main as TweenMain } from '../tweens'
 import { main as GltfTest } from '../gltf-test'
 import { UI as UiTestUi, main as UiTestMain } from '../ui-test'
 import { UI as AvatarTestUi, main as AvatarTestMain } from '../avatar-test'
+import { UI as SyncSceneUi, main as SyncSceneMain } from '../sync-scene'
 
 export type SceneItem = {
   name: string
@@ -70,5 +71,10 @@ export const scenesOptions: SceneItem[] = [
     name: 'Avatar Test',
     mainFn: AvatarTestMain,
     ui: AvatarTestUi
+  },
+  {
+    name: 'Sync Scene Test',
+    mainFn: SyncSceneMain,
+    ui: SyncSceneUi
   }
 ]

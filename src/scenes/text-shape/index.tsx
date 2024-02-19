@@ -1,30 +1,32 @@
 import ReactEcs, {
   Dropdown,
   Input,
+  Label,
   UiEntity,
-  type JSX,
-  Label
+  type JSX
 } from '@dcl/sdk/react-ecs'
 import { sceneSystems } from '../../utils/system'
 import { UiBox } from '../../utils/ui/box'
 
 import {
+  Font,
+  Material,
   MeshRenderer,
+  TextAlignMode,
   TextShape,
   Transform,
-  type PBTextShape,
-  TextAlignMode,
-  Font
+  type PBTextShape
 } from '@dcl/sdk/ecs'
 import { Color3, Color4, Vector3 } from '@dcl/sdk/math'
-import { sceneEntities } from '../../utils/entity'
 import { GODOT_ALL_COLORS, GODOT_ALL_COLORS_KEYS } from '../../utils/color'
+import { sceneEntities } from '../../utils/entity'
 
 type State = {
   textShape: PBTextShape
   dirty: boolean
 
   textColorIndex: number
+  outlineColorIndex: number
 }
 
 const state: State = {
@@ -52,6 +54,7 @@ const state: State = {
     textColor: Color4.White()
   },
   dirty: true,
+  outlineColorIndex: GODOT_ALL_COLORS_KEYS.indexOf('WHITE'),
   textColorIndex: GODOT_ALL_COLORS_KEYS.indexOf('WHITE')
 }
 
@@ -59,6 +62,12 @@ export function main(): void {
   const textShapeEntity = sceneEntities.addEntity()
   const plane = sceneEntities.addEntity()
   MeshRenderer.setPlane(plane)
+
+  Material.setPbrMaterial(plane, {
+    albedoColor: Color4.Black(),
+    metallic: 1,
+    roughness: 1
+  })
 
   sceneSystems.addSystemWithInverval(
     (_dt) => {
@@ -230,6 +239,36 @@ export function MainSceneUi(): JSX.Element {
           }}
           options={['NO', 'YES']}
           selectedIndex={state.textShape.textWrapping === true ? 1 : 0}
+        />
+      </UiEntity>
+
+      <UiEntity>
+        <Label value="Outline Width" />
+        <Input
+          uiTransform={{ margin: 10, height: 20 }}
+          uiBackground={{ color: Color4.White() }}
+          color={Color4.Black()}
+          onChange={(newValue) => {
+            state.textShape.outlineWidth = Number(newValue)
+          }}
+          value={`${state.textShape.paddingRight}`}
+        />
+        <Label value="Outline Color" />
+        <Dropdown
+          uiTransform={{ margin: 10, height: 20 }}
+          uiBackground={{ color: Color4.White() }}
+          color={Color4.Black()}
+          onChange={(newValue) => {
+            state.outlineColorIndex = Number(newValue)
+            state.textShape.outlineColor =
+              GODOT_ALL_COLORS[GODOT_ALL_COLORS_KEYS[state.outlineColorIndex]]
+            console.log({
+              colorIndex: state.outlineColorIndex,
+              color: state.textShape.outlineColor
+            })
+          }}
+          options={GODOT_ALL_COLORS_KEYS}
+          selectedIndex={state.outlineColorIndex}
         />
       </UiEntity>
     </UiBox>
