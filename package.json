@@ -14,8 +14,8 @@
     "export-static": "sdk-commands export-static --destination static/ --realmName mannakia-dcl-scene --baseUrl https://leanmendoza.github.io/mannakia-dcl-scene/ --commsAdapter ws-room:ws-room-service.decentraland.org/rooms/mannakia-dcl-scene"
   },
   "devDependencies": {
-    "@dcl/js-runtime": "7.3.27-6735652561.commit-030c35f",
-    "@dcl/sdk": "7.3.27-6735652561.commit-030c35f",
+    "@dcl/js-runtime": "7.4.2",
+    "@dcl/sdk": "latest",
     "@typescript-eslint/eslint-plugin": "^6.9.1",
     "dcl-crypto-toolkit": "^1.0.0-20231213161359.commit-4e6bbb6",
     "eslint": "^8.53.0",
@@ -35,5 +35,8 @@
     "singleQuote": true,
     "printWidth": 120,
     "trailingComma": "none"
+  },
+  "dependencies": {
+    "@dcl-sdk/utils": "^1.2.6"
   }
 }

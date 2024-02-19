@@ -3,6 +3,7 @@ import { engine } from '@dcl/sdk/ecs'
 
 function createEntityManagerFunction(): {
   addEntity: () => Entity
+  pushEntity: (newEntity: Entity) => void
   removeEntity: (entity: Entity) => void
   clean: () => void
   isEmpty: () => boolean
@@ -25,6 +26,9 @@ function createEntityManagerFunction(): {
         engine.removeEntity(entity)
       }
       arr = []
+    },
+    pushEntity(newEntity: Entity) {
+      arr.push(newEntity)
     },
     isEmpty() {
       return arr.length === 0
