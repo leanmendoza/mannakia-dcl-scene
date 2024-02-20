@@ -2,16 +2,21 @@ import { Color4 } from '@dcl/sdk/math'
 import ReactEcs, {
   type JSX,
   UiEntity,
-  type EntityPropTypes
+  type EntityPropTypes,
+  type UiTransformProps,
+  type PositionUnit
 } from '@dcl/sdk/react-ecs'
 
 type UiBoxProps = EntityPropTypes & {
-  width: number
-  height: number
+  width: PositionUnit | 'auto'
+  height: PositionUnit | 'auto'
+  color?: Color4
+  fixedPosition?: boolean
 }
 
 export function UiBox(props: UiBoxProps): JSX.Element {
-  const { width, height, uiBackground, uiTransform, ...otherProps } = props
+  const { width, height, uiBackground, uiTransform, color, fixedPosition, ...otherProps } = props
+  const fixedPositionObject: Partial<UiTransformProps> = (props.fixedPosition ?? true) ? { positionType: 'absolute', position: { bottom: '5%', right: '5%'} } : {}
   return (
     <UiEntity
       uiTransform={{
@@ -20,13 +25,12 @@ export function UiBox(props: UiBoxProps): JSX.Element {
       }}
     >
       <UiEntity
-        uiBackground={{ color: Color4.Blue(), ...uiBackground }}
+        uiBackground={{ color: props.color ?? Color4.Blue(), ...uiBackground }}
         uiTransform={{
           width,
           height,
           flexDirection: 'column',
-          positionType: 'absolute',
-          position: { bottom: '5%', right: '5%' },
+          ...fixedPositionObject,
           ...uiTransform
         }}
         {...otherProps}
