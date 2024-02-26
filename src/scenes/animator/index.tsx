@@ -20,7 +20,6 @@ import { sceneEntities } from '../../utils/entity'
 
 let animatorEntity: Entity
 
-
 type State = {
   weight: Record<string, string>
   speed: Record<string, string>
@@ -28,12 +27,12 @@ type State = {
 
 const state: State = {
   weight: {
-    'swim': '1.0',
-    'bite': '1.0'
+    swim: '1.0',
+    bite: '1.0'
   },
   speed: {
-    'swim': '1.0',
-    'bite': '1.0'
+    swim: '1.0',
+    bite: '1.0'
   }
 }
 
@@ -45,15 +44,17 @@ function respawnShark(): void {
   Transform.createOrReplace(animatorEntity, {
     position: Vector3.add(position, Vector3.create(0, 0, -0.05))
   })
-  GltfContainer.create(animatorEntity, { src: 'assets/shark/shark.glb'})
+  GltfContainer.create(animatorEntity, { src: 'assets/shark/shark.glb' })
   Animator.createOrReplace(animatorEntity, {
-    states: [{
-      clip: 'swim',
-    },{
-      clip: 'bite'
-    }]
+    states: [
+      {
+        clip: 'swim'
+      },
+      {
+        clip: 'bite'
+      }
+    ]
   })
-
 }
 
 export function main(): void {
@@ -64,7 +65,6 @@ export function main(): void {
       // const width = state.textShape.width ?? 4
       // const height = state.textShape.height ?? 4
       // TextShape.createOrReplace(textShapeEntity, { ...state.textShape })
-
       // const position = Vector3.create(8, 1 + height / 2, 8)
       // Transform.createOrReplace(textShapeEntity, {
       //   position: Vector3.add(position, Vector3.create(0, 0, -0.05))
@@ -91,10 +91,22 @@ export function main(): void {
 // /** whether the Entity is restored to its prior state when done */
 // shouldReset?: boolean | undefined;
 
-
 // Get the value with default fallback
 function getImmutableClip(clip: string): PBAnimationState {
-  const value = Animator.get(animatorEntity).states.find((state) => state.clip === clip) as PBAnimationState
+  if (Animator.getOrNull(animatorEntity) === null) {
+    return {
+      clip,
+      playing: false,
+      weight: 1.0,
+      speed: 1.0,
+      loop: true,
+      shouldReset: false
+    }
+  }
+
+  const value = Animator.get(animatorEntity).states.find(
+    (state) => state.clip === clip
+  ) as PBAnimationState
 
   return {
     clip: value.clip,
@@ -106,34 +118,58 @@ function getImmutableClip(clip: string): PBAnimationState {
   }
 }
 
-function AnimatorClip(props: {clip: string}): JSX.Element  {
+function AnimatorClip(props: { clip: string }): JSX.Element {
   return (
-    <UiBox width={280} height={280} color={Color4.create(1.0, 1.0, 1.0, 0.2)} fixedPosition={false}>
-      <Label fontSize={20} uiTransform={{minHeight: 30}} value={`Clip=${props.clip}`} />
-      <Button 
-        uiBackground={{color: getImmutableClip(props.clip).playing === true ? Color4.Green() : Color4.Red()}} 
-        uiTransform={{width: '100%'}} 
-        value='Playing' 
+    <UiBox
+      width={280}
+      height={280}
+      color={Color4.create(1.0, 1.0, 1.0, 0.2)}
+      fixedPosition={false}
+    >
+      <Label
+        fontSize={20}
+        uiTransform={{ minHeight: 30 }}
+        value={`Clip=${props.clip}`}
+      />
+      <Button
+        uiBackground={{
+          color:
+            getImmutableClip(props.clip).playing === true
+              ? Color4.Green()
+              : Color4.Red()
+        }}
+        uiTransform={{ width: '100%' }}
+        value="Playing"
         onMouseDown={() => {
           const clip = Animator.getClip(animatorEntity, props.clip)
           clip.playing = getImmutableClip(props.clip).playing !== true
         }}
         fontSize={20}
       />
-      <Button 
-        uiBackground={{color: getImmutableClip(props.clip).loop === true ? Color4.Green() : Color4.Red()}} 
-        uiTransform={{width: '100%'}} 
-        value='Loop' 
+      <Button
+        uiBackground={{
+          color:
+            getImmutableClip(props.clip).loop === true
+              ? Color4.Green()
+              : Color4.Red()
+        }}
+        uiTransform={{ width: '100%' }}
+        value="Loop"
         onMouseDown={() => {
           const clip = Animator.getClip(animatorEntity, props.clip)
           clip.loop = getImmutableClip(props.clip).loop !== true
         }}
         fontSize={20}
       />
-      <Button 
-        uiBackground={{color: getImmutableClip(props.clip).shouldReset === true ? Color4.Green() : Color4.Red()}} 
-        uiTransform={{width: '100%'}} 
-        value='ShouldReset' 
+      <Button
+        uiBackground={{
+          color:
+            getImmutableClip(props.clip).shouldReset === true
+              ? Color4.Green()
+              : Color4.Red()
+        }}
+        uiTransform={{ width: '100%' }}
+        value="ShouldReset"
         onMouseDown={() => {
           const clip = Animator.getClip(animatorEntity, props.clip)
           clip.shouldReset = getImmutableClip(props.clip).shouldReset !== true
@@ -141,10 +177,16 @@ function AnimatorClip(props: {clip: string}): JSX.Element  {
         fontSize={20}
       />
       <UiEntity>
-        <Label fontSize={20} uiTransform={{minHeight: 30, minWidth: '50%'}} value={`Weight=${(getImmutableClip(props.clip).weight ?? 1).toFixed(2)}`} />
-        <Input 
-          uiTransform={{width: '50%'}}
-          value={state.weight[props.clip]} 
+        <Label
+          fontSize={20}
+          uiTransform={{ minHeight: 30, minWidth: '50%' }}
+          value={`Weight=${(getImmutableClip(props.clip).weight ?? 1).toFixed(
+            2
+          )}`}
+        />
+        <Input
+          uiTransform={{ width: '50%' }}
+          value={state.weight[props.clip]}
           onChange={(newValue) => {
             const clip = Animator.getClip(animatorEntity, props.clip)
             const newNumber = Number(newValue)
@@ -157,10 +199,16 @@ function AnimatorClip(props: {clip: string}): JSX.Element  {
         />
       </UiEntity>
       <UiEntity>
-        <Label fontSize={20} uiTransform={{minHeight: 30, minWidth: '50%'}} value={`Speed=${(getImmutableClip(props.clip).speed ?? 1).toFixed(2)}`} />
-        <Input 
-          uiTransform={{width: '50%'}}
-          value={state.speed[props.clip]} 
+        <Label
+          fontSize={20}
+          uiTransform={{ minHeight: 30, minWidth: '50%' }}
+          value={`Speed=${(getImmutableClip(props.clip).speed ?? 1).toFixed(
+            2
+          )}`}
+        />
+        <Input
+          uiTransform={{ width: '50%' }}
+          value={state.speed[props.clip]}
           onChange={(newValue) => {
             const clip = Animator.getClip(animatorEntity, props.clip)
             const newNumber = Number(newValue)
@@ -176,13 +224,12 @@ function AnimatorClip(props: {clip: string}): JSX.Element  {
   )
 }
 
-
 export function MainSceneUi(): JSX.Element {
   return (
     <UiBox width={600} height={300} uiTransform={{ padding: 10 }}>
-      <UiEntity >
-        <AnimatorClip clip='swim' />
-        <AnimatorClip clip='bite' />
+      <UiEntity>
+        <AnimatorClip clip="swim" />
+        <AnimatorClip clip="bite" />
       </UiEntity>
     </UiBox>
   )

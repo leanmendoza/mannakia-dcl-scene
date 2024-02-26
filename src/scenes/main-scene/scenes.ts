@@ -17,7 +17,10 @@ import { main as GltfTest } from '../gltf-test'
 import { UI as UiTestUi, main as UiTestMain } from '../ui-test'
 import { UI as AvatarTestUi, main as AvatarTestMain } from '../avatar-test'
 import { UI as SyncSceneUi, main as SyncSceneMain } from '../sync-scene'
-import { MainSceneUi as AnimatorSceneUi, main as AnimatorSceneMain } from '../animator'
+import {
+  MainSceneUi as AnimatorSceneUi,
+  main as AnimatorSceneMain
+} from '../animator'
 
 export type SceneItem = {
   name: string

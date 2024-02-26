@@ -15,8 +15,19 @@ type UiBoxProps = EntityPropTypes & {
 }
 
 export function UiBox(props: UiBoxProps): JSX.Element {
-  const { width, height, uiBackground, uiTransform, color, fixedPosition, ...otherProps } = props
-  const fixedPositionObject: Partial<UiTransformProps> = (props.fixedPosition ?? true) ? { positionType: 'absolute', position: { bottom: '5%', right: '5%'} } : {}
+  const {
+    width,
+    height,
+    uiBackground,
+    uiTransform,
+    color,
+    fixedPosition,
+    ...otherProps
+  } = props
+  const fixedPositionObject: Partial<UiTransformProps> =
+    props.fixedPosition ?? true
+      ? { positionType: 'absolute', position: { bottom: '5%', right: '5%' } }
+      : {}
   return (
     <UiEntity
       uiTransform={{
