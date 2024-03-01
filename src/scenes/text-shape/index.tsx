@@ -97,7 +97,7 @@ export function MainSceneUi(): JSX.Element {
           alignItems: 'stretch'
         }}
       >
-        <Label value="Text" uiTransform={{ minWidth: 80 }} />
+        <Label value="Text" />
         <Input
           uiTransform={{ width: '80%', margin: 10, height: 20 }}
           uiBackground={{ color: Color4.White() }}
@@ -109,7 +109,7 @@ export function MainSceneUi(): JSX.Element {
       </UiEntity>
 
       <UiEntity>
-        <Label value="Font" uiTransform={{ minWidth: 80 }} />
+        <Label value="Font" />
         <Input
           uiTransform={{ margin: 10, height: 20 }}
           uiBackground={{ color: Color4.White() }}
@@ -130,7 +130,7 @@ export function MainSceneUi(): JSX.Element {
         />
       </UiEntity>
       <UiEntity>
-        <Label value="Align" uiTransform={{ minWidth: 80 }} />
+        <Label value="Align" />
         <Dropdown
           uiTransform={{ margin: 10, height: 20 }}
           uiBackground={{ color: Color4.White() }}
@@ -152,7 +152,7 @@ export function MainSceneUi(): JSX.Element {
         />
       </UiEntity>
       <UiEntity>
-        <Label value="Size" uiTransform={{ minWidth: 80 }} />
+        <Label value="Size" />
         <Input
           uiTransform={{ margin: 10, height: 20 }}
           uiBackground={{ color: Color4.White() }}
@@ -215,7 +215,7 @@ export function MainSceneUi(): JSX.Element {
         />
       </UiEntity>
       <UiEntity>
-        <Label value="Text Color" uiTransform={{ minWidth: 80 }} />
+        <Label value="Text Color" />
         <Dropdown
           uiTransform={{ margin: 10, height: 20 }}
           uiBackground={{ color: Color4.White() }}
@@ -232,7 +232,7 @@ export function MainSceneUi(): JSX.Element {
           options={GODOT_ALL_COLORS_KEYS}
           selectedIndex={state.textColorIndex}
         />
-        <Label value="Wrapping" uiTransform={{ minWidth: 80 }} />
+        <Label value="Wrapping" />
         <Dropdown
           uiTransform={{ margin: 10, height: 20 }}
           uiBackground={{ color: Color4.White() }}
@@ -246,7 +246,7 @@ export function MainSceneUi(): JSX.Element {
       </UiEntity>
 
       <UiEntity>
-        <Label value="Outline Width" uiTransform={{ minWidth: 80 }} />
+        <Label value="Outline Width" />
         <Input
           uiTransform={{ margin: 10, height: 20 }}
           uiBackground={{ color: Color4.White() }}
@@ -256,7 +256,7 @@ export function MainSceneUi(): JSX.Element {
           }}
           value={`${state.textShape.paddingRight}`}
         />
-        <Label value="Outline Color" uiTransform={{ minWidth: 80 }} />
+        <Label value="Outline Color" />
         <Dropdown
           uiTransform={{ margin: 10, height: 20 }}
           uiBackground={{ color: Color4.White() }}
