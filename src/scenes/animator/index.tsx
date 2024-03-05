@@ -223,14 +223,62 @@ function AnimatorClip(props: { clip: string }): JSX.Element {
     </UiBox>
   )
 }
-
 export function MainSceneUi(): JSX.Element {
-  return (
+  return [
     <UiBox width={600} height={300} uiTransform={{ padding: 10 }}>
       <UiEntity>
         <AnimatorClip clip="swim" />
         <AnimatorClip clip="bite" />
       </UiEntity>
+    </UiBox>,
+    
+    <UiBox width={200} height={300} uiTransform={{ padding: 10 }}>
+    <Button value='Spawn Teleporter' onMouseDown={() => {
+      respawnTeleporter()
+    }} /> 
+    <Button value='Remove Teleporter' onMouseDown={() => {
+  if (teleporterEntity !== null) {
+    sceneEntities.removeEntity(teleporterEntity)
+  }
+  teleporterEntity = null
+    }} />
     </UiBox>
-  )
+  ]
+}
+
+
+let teleporterEntity: Entity | null = null
+function respawnTeleporter(): void {
+  if (teleporterEntity !== null) {
+    sceneEntities.removeEntity(teleporterEntity)
+  }
+
+  const newEntity = sceneEntities.addEntity()
+  teleporterEntity = newEntity
+
+  GltfContainer.create(newEntity, { src: 'assets/teleporter/teleporter.glb' })
+  Transform.createOrReplace(newEntity, {
+    position: Vector3.create(2, 0, 8)
+  })
+    
+  Animator.create(newEntity, {
+      states:[
+      {
+          clip: "teleportOpen",
+          playing: true,
+          loop: false,
+          shouldReset: true,
+      },
+      {
+          clip: "teleportClose",
+          playing: false,
+          loop: false
+      }
+      ]
+  })
+
+  // Animator.stopAllAnimations(newEntity)
+  // const doorOpenAnim = Animator.getClip(newEntity, "teleportOpen")
+  // doorOpenAnim.playing = true
+
 }
