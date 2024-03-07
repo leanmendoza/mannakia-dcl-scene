@@ -5,7 +5,11 @@ import {
   type DeepReadonlyObject,
   type Entity,
   type PBAvatarEmoteCommand,
-  AvatarShape
+  AvatarShape,
+  MeshRenderer,
+  Transform,
+  AvatarAttach,
+  MeshCollider
 } from '@dcl/sdk/ecs'
 import ReactEcs, { Label, type JSX } from '@dcl/sdk/react-ecs'
 import { UiBox } from '../../utils/ui/box'
@@ -82,6 +86,25 @@ export function main(): void {
     1,
     'avatar-test-system'
   )
+
+  const entityToAttach = sceneEntities.addEntity()
+  Transform.createOrReplace(entityToAttach, {})
+
+  const boxInAvatar = sceneEntities.addEntity()
+  MeshRenderer.setBox(boxInAvatar)
+  Transform.createOrReplace(boxInAvatar, {
+    parent: entityToAttach,
+    position: Vector3.create(0, 0, 0),
+    scale: Vector3.create(1, 0.1, 1)
+  })
+  AvatarAttach.create(entityToAttach)
+
+  const collider = sceneEntities.addEntity()
+  MeshCollider.setBox(collider)
+  Transform.createOrReplace(collider, {
+    position: Vector3.create(2, 1, 2),
+    scale: Vector3.create(2, 0.1, 2)
+  })
 }
 
 function getEmotes(): Array<

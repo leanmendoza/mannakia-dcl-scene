@@ -151,6 +151,7 @@ export function MainSceneUi(): JSX.Element {
           selectedIndex={state.textShape.textAlign ?? 0}
         />
       </UiEntity>
+
       <UiEntity>
         <Label value="Size" />
         <Input

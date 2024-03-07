@@ -27,6 +27,7 @@ export type SceneItem = {
   mainFn?: () => void
   ui?: () => JSX.Element
   extended?: boolean
+  default?: boolean
 }
 
 export const scenesOptions: SceneItem[] = [
@@ -74,7 +75,8 @@ export const scenesOptions: SceneItem[] = [
   {
     name: 'Avatar Test',
     mainFn: AvatarTestMain,
-    ui: AvatarTestUi
+    ui: AvatarTestUi,
+    default: true
   },
   {
     name: 'Sync Scene Test',

@@ -231,21 +231,34 @@ export function MainSceneUi(): JSX.Element {
         <AnimatorClip clip="bite" />
       </UiEntity>
     </UiBox>,
-    
+
     <UiBox width={200} height={300} uiTransform={{ padding: 10 }}>
-    <Button value='Spawn Teleporter' onMouseDown={() => {
-      respawnTeleporter()
-    }} /> 
-    <Button value='Remove Teleporter' onMouseDown={() => {
-  if (teleporterEntity !== null) {
-    sceneEntities.removeEntity(teleporterEntity)
-  }
-  teleporterEntity = null
-    }} />
+      <Button
+        value="Spawn Teleporter"
+        onMouseDown={() => {
+          respawnTeleporter()
+        }}
+      />
+
+      <Button
+        value="Remove Teleporter"
+        onMouseDown={() => {
+          if (teleporterEntity !== null) {
+            sceneEntities.removeEntity(teleporterEntity)
+          }
+          teleporterEntity = null
+        }}
+      />
+
+      <Button
+        value="Tag Shark as dirty"
+        onMouseDown={() => {
+          Animator.getMutableOrNull(animatorEntity)
+        }}
+      />
     </UiBox>
   ]
 }
-
 
 let teleporterEntity: Entity | null = null
 function respawnTeleporter(): void {
@@ -260,25 +273,24 @@ function respawnTeleporter(): void {
   Transform.createOrReplace(newEntity, {
     position: Vector3.create(2, 0, 8)
   })
-    
+
   Animator.create(newEntity, {
-      states:[
+    states: [
       {
-          clip: "teleportOpen",
-          playing: true,
-          loop: false,
-          shouldReset: true,
+        clip: 'teleportOpen',
+        playing: true,
+        loop: false,
+        shouldReset: true
       },
       {
-          clip: "teleportClose",
-          playing: false,
-          loop: false
+        clip: 'teleportClose',
+        playing: false,
+        loop: false
       }
-      ]
+    ]
   })
 
   // Animator.stopAllAnimations(newEntity)
   // const doorOpenAnim = Animator.getClip(newEntity, "teleportOpen")
   // doorOpenAnim.playing = true
-
 }
