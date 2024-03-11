@@ -28,15 +28,17 @@ type State = {
 const state: State = {
   weight: {
     swim: '1.0',
-    bite: '1.0'
+    bite: '1.0',
+    Rot: '1.0'
   },
   speed: {
     swim: '1.0',
-    bite: '1.0'
+    bite: '1.0',
+    Rot: '1.0'
   }
 }
 
-function respawnShark(): void {
+function respawnGltf(shark: boolean = true): void {
   sceneEntities.removeEntity(animatorEntity)
   animatorEntity = sceneEntities.addEntity()
 
@@ -44,7 +46,11 @@ function respawnShark(): void {
   Transform.createOrReplace(animatorEntity, {
     position: Vector3.add(position, Vector3.create(0, 0, -0.05))
   })
-  GltfContainer.create(animatorEntity, { src: 'assets/shark/shark.glb' })
+  GltfContainer.create(animatorEntity, {
+    src: shark
+      ? 'assets/shark/shark.glb'
+      : 'assets/animations/cube_example_2.glb'
+  })
   Animator.createOrReplace(animatorEntity, {
     states: [
       {
@@ -52,13 +58,16 @@ function respawnShark(): void {
       },
       {
         clip: 'bite'
+      },
+      {
+        clip: 'Rot'
       }
     ]
   })
 }
 
 export function main(): void {
-  respawnShark()
+  respawnGltf()
 
   sceneSystems.addSystemWithInverval(
     (_dt) => {
@@ -212,7 +221,7 @@ function AnimatorClip(props: { clip: string }): JSX.Element {
           onChange={(newValue) => {
             const clip = Animator.getClip(animatorEntity, props.clip)
             const newNumber = Number(newValue)
-            if (newNumber >= 0 && newNumber <= 100.0) {
+            if (newNumber >= -100 && newNumber <= 100.0) {
               clip.speed = newNumber
             }
             state.speed[props.clip] = newValue
@@ -225,10 +234,11 @@ function AnimatorClip(props: { clip: string }): JSX.Element {
 }
 export function MainSceneUi(): JSX.Element {
   return [
-    <UiBox width={600} height={300} uiTransform={{ padding: 10 }}>
+    <UiBox width={800} height={300} uiTransform={{ padding: 10 }}>
       <UiEntity>
         <AnimatorClip clip="swim" />
         <AnimatorClip clip="bite" />
+        <AnimatorClip clip="Rot" />
       </UiEntity>
     </UiBox>,
 
@@ -251,9 +261,21 @@ export function MainSceneUi(): JSX.Element {
       />
 
       <Button
-        value="Tag Shark as dirty"
+        value="Tag Animator Component as dirty"
         onMouseDown={() => {
           Animator.getMutableOrNull(animatorEntity)
+        }}
+      />
+      <Button
+        value="Respawn shark"
+        onMouseDown={() => {
+          respawnGltf()
+        }}
+      />
+      <Button
+        value="Respawn cube"
+        onMouseDown={() => {
+          respawnGltf(false)
         }}
       />
     </UiBox>
@@ -289,8 +311,4 @@ function respawnTeleporter(): void {
       }
     ]
   })
-
-  // Animator.stopAllAnimations(newEntity)
-  // const doorOpenAnim = Animator.getClip(newEntity, "teleportOpen")
-  // doorOpenAnim.playing = true
 }
