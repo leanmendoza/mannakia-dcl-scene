@@ -28,6 +28,7 @@ export function setupUi(element?: () => JSX.Element, extended?: boolean): void {
 
 let sceneIndex = 0
 export function setChangeScene(newSceneIndex: number): void {
+  console.log('setChangeScene to scene', newSceneIndex)
   if (newSceneIndex === sceneIndex) return
   sceneIndex = newSceneIndex
 

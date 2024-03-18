@@ -75,8 +75,7 @@ export const scenesOptions: SceneItem[] = [
   {
     name: 'Avatar Test',
     mainFn: AvatarTestMain,
-    ui: AvatarTestUi,
-    default: true
+    ui: AvatarTestUi
   },
   {
     name: 'Sync Scene Test',
@@ -86,6 +85,8 @@ export const scenesOptions: SceneItem[] = [
   {
     name: 'Animator Scene Test',
     mainFn: AnimatorSceneMain,
-    ui: AnimatorSceneUi
+    ui: AnimatorSceneUi,
+    extended: true,
+    default: true
   }
 ]
