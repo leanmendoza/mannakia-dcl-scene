@@ -63,6 +63,59 @@ async function handleGasPrice(): Promise<void> {
   state.gasPrice = gasPrice
 }
 
+async function handleSignHelloWorld(): Promise<void> {
+  try {
+    const res = await sendAsync({
+      id: 999,
+      method: 'eth_signTypedData_v4',
+      jsonParams: JSON.stringify([
+        state.playerUserId,
+        {
+          types: {
+            EIP712Domain: [
+              {
+                name: 'name',
+                type: 'string'
+              },
+              {
+                name: 'version',
+                type: 'string'
+              },
+              {
+                name: 'chainId',
+                type: 'uint256'
+              }
+            ],
+            Message: [
+              {
+                name: 'body',
+                type: 'string'
+              },
+              {
+                name: 'wallet',
+                type: 'address'
+              }
+            ]
+          },
+          primaryType: 'Message',
+          domain: {
+            name: 'HelloWorldChecker',
+            version: '1',
+            chainId: 1
+          },
+          message: {
+            body: 'Hello world',
+            wallet: state.playerUserId
+          }
+        }
+      ])
+    })
+    console.log({ res })
+  } catch (err) {
+    console.error('custom', err)
+  }
+}
+
 export function MainSceneUi(): JSX.Element {
   return (
     <UiBox width={400} height={300} uiTransform={{ padding: 10 }}>
@@ -107,6 +160,12 @@ export function MainSceneUi(): JSX.Element {
           uiTransform={{ height: 30 }}
         />
       )}
+
+      <Button
+        uiTransform={{ margin: { top: 10 } }}
+        onMouseDown={callPromise(handleSignHelloWorld)}
+        value="Sign hello world"
+      ></Button>
     </UiBox>
   )
 }
