@@ -21,6 +21,7 @@ import {
   MainSceneUi as AnimatorSceneUi,
   main as AnimatorSceneMain
 } from '../animator'
+import {main as GltfNodeModifierStressMain } from '../gltf-node-modifier-stress'
 
 export type SceneItem = {
   name: string
@@ -85,7 +86,12 @@ export const scenesOptions: SceneItem[] = [
   {
     name: 'Animator Scene Test',
     mainFn: AnimatorSceneMain,
-    ui: AnimatorSceneUi,
+    ui: AnimatorSceneUi
+  },
+  {
+    name: 'GltfNodeModifier Stress Test',
+    mainFn: GltfNodeModifierStressMain,
+    ui: undefined,
     extended: true,
     default: true
   }

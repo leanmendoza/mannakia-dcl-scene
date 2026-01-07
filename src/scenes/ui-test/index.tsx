@@ -38,11 +38,13 @@ export function main(): void {
   )
 }
 
-export function UI(): JSX.Element[] {
-  return [
-    <UiSelector state={getUiTestState()} />,
-    <UiTest state={getUiTestState()} />
-  ]
+export function UI(): JSX.Element {
+  return (
+    <UiEntity>
+      <UiSelector state={getUiTestState()} />
+      <UiTest state={getUiTestState()} />
+    </UiEntity>
+  )
 }
 
 function UiSelector(props: { state: UiTestStateType }): JSX.Element {

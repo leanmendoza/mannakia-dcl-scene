@@ -233,16 +233,17 @@ function AnimatorClip(props: { clip: string }): JSX.Element {
   )
 }
 export function MainSceneUi(): JSX.Element {
-  return [
-    <UiBox width={800} height={300} uiTransform={{ padding: 10 }}>
+  return (
+    <UiEntity>
+      <UiBox width={800} height={300} uiTransform={{ padding: 10 }}>
       <UiEntity>
         <AnimatorClip clip="swim" />
         <AnimatorClip clip="bite" />
         <AnimatorClip clip="Rot" />
       </UiEntity>
-    </UiBox>,
+    </UiBox>
 
-    <UiBox width={200} height={300} uiTransform={{ padding: 10 }}>
+      <UiBox width={200} height={300} uiTransform={{ padding: 10 }}>
       <Button
         value="Spawn Teleporter"
         onMouseDown={() => {
@@ -279,7 +280,8 @@ export function MainSceneUi(): JSX.Element {
         }}
       />
     </UiBox>
-  ]
+    </UiEntity>
+  )
 }
 
 let teleporterEntity: Entity | null = null
