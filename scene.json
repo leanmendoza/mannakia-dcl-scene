@@ -2,8 +2,8 @@
   "ecs7": true,
   "runtimeVersion": "7",
   "display": {
-    "title": "Mannakia Scene",
-    "description": "template scene with SDK7",
+    "title": "MannakiaWorld",
+    "description": "World Test Scene",
     "navmapThumbnail": "images/scene-thumbnail.png",
     "favicon": "favicon_asset"
   },
@@ -114,5 +114,6 @@
   "source": {
     "origin": "creator-hub",
     "projectId": "621e5ac0-1dd9-4b22-bd76-fea2896d54c4"
-  }
+  },
+  "creator": ""
 }

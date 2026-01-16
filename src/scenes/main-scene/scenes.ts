@@ -16,12 +16,20 @@ import { MainSceneUi as TweenSceneUi, main as TweenMain } from '../tweens'
 import { main as GltfTest } from '../gltf-test'
 import { UI as UiTestUi, main as UiTestMain } from '../ui-test'
 import { UI as AvatarTestUi, main as AvatarTestMain } from '../avatar-test'
+import {
+  UI as AvatarTextureTestUi,
+  main as AvatarTextureTestMain
+} from '../avatar-texture-test'
 import { UI as SyncSceneUi, main as SyncSceneMain } from '../sync-scene'
 import {
   MainSceneUi as AnimatorSceneUi,
   main as AnimatorSceneMain
 } from '../animator'
 import {main as GltfNodeModifierStressMain } from '../gltf-node-modifier-stress'
+import {
+  UI as AnimatedBannersUi,
+  main as AnimatedBannersMain
+} from '../animated-banners'
 
 export type SceneItem = {
   name: string
@@ -79,6 +87,11 @@ export const scenesOptions: SceneItem[] = [
     ui: AvatarTestUi
   },
   {
+    name: 'Avatar Texture Test',
+    mainFn: AvatarTextureTestMain,
+    ui: AvatarTextureTestUi
+  },
+  {
     name: 'Sync Scene Test',
     mainFn: SyncSceneMain,
     ui: SyncSceneUi
@@ -92,7 +105,12 @@ export const scenesOptions: SceneItem[] = [
     name: 'GltfNodeModifier Stress Test',
     mainFn: GltfNodeModifierStressMain,
     ui: undefined,
-    extended: true,
+    extended: true
+  },
+  {
+    name: 'Animated Banners',
+    mainFn: AnimatedBannersMain,
+    ui: AnimatedBannersUi,
     default: true
   }
 ]
