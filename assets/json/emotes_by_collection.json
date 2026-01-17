@@ -1,0 +1,900 @@
+{
+  "Metaverse Art Week 2022": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x016a61feb6377239e34425b82e5c4b367e52457f:3",
+      "category": "reactions",
+      "name": "The Critic",
+      "loop": false
+    }
+  ],
+  "MEW EMOTE COLLECTION 1": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x018af5671d8d6ddc84dd5edaf0539f3a8376779e:0",
+      "category": "dance",
+      "name": "Azul × MEW",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x018af5671d8d6ddc84dd5edaf0539f3a8376779e:1",
+      "category": "dance",
+      "name": "Bboy Jeffro × MEW",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x018af5671d8d6ddc84dd5edaf0539f3a8376779e:10",
+      "category": "dance",
+      "name": "Bboy Ronnie × MEW",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x018af5671d8d6ddc84dd5edaf0539f3a8376779e:11",
+      "category": "dance",
+      "name": "Pau Pulido × MEW",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x018af5671d8d6ddc84dd5edaf0539f3a8376779e:12",
+      "category": "dance",
+      "name": "Kim Kong × MEW",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x018af5671d8d6ddc84dd5edaf0539f3a8376779e:13",
+      "category": "dance",
+      "name": "Sergio Poveda × MEW",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x018af5671d8d6ddc84dd5edaf0539f3a8376779e:2",
+      "category": "dance",
+      "name": "Kento Mori × MEW",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x018af5671d8d6ddc84dd5edaf0539f3a8376779e:3",
+      "category": "dance",
+      "name": "Kite × MEW",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x018af5671d8d6ddc84dd5edaf0539f3a8376779e:4",
+      "category": "dance",
+      "name": "Mikey Dellavella × MEW",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x018af5671d8d6ddc84dd5edaf0539f3a8376779e:5",
+      "category": "dance",
+      "name": "Reza Jackson × MEW",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x018af5671d8d6ddc84dd5edaf0539f3a8376779e:6",
+      "category": "dance",
+      "name": "Nicole Flores × MEW",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x018af5671d8d6ddc84dd5edaf0539f3a8376779e:7",
+      "category": "dance",
+      "name": "Brian Friedman × MEW",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x018af5671d8d6ddc84dd5edaf0539f3a8376779e:8",
+      "category": "dance",
+      "name": "Poncho × MEW",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x018af5671d8d6ddc84dd5edaf0539f3a8376779e:9",
+      "category": "dance",
+      "name": "Marshall × MEW",
+      "loop": true
+    }
+  ],
+  "Luxury-Twirl!": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x01eb68633e3dccd9949bf053df79202d288b8ba3:0",
+      "category": "poses",
+      "name": "Luxury-Twirl!",
+      "loop": true
+    }
+  ],
+  "Maracas dance": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x02747d94478632a65dc51a9d34186a4eb95a24a6:0",
+      "category": "dance",
+      "name": "Maracas dance by Isamazing",
+      "loop": true
+    }
+  ],
+  "Christmas Spirit by CarlosMu": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x03bd4000705ead3a8d89784144dcee0797bd99b7:0",
+      "category": "dance",
+      "name": "Christmas Spirit by CarlosMu",
+      "loop": true
+    }
+  ],
+  "Roustan Tiny Pixie": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x057fe18640ba60458a5a5a64e715cad61e4bacef:0",
+      "category": "fun",
+      "name": "The ORIGINAL Tiny Pixie",
+      "loop": true
+    }
+  ],
+  "Abranimations Dance #7": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x05ac6780a5dbe75012dcd7532c0fab204ba28a30:0",
+      "category": "dance",
+      "name": "Make It Rain",
+      "loop": true
+    }
+  ],
+  "Soul Meditation": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x05eb641c7bd017de92ee943938f99844a9e345b3:0",
+      "category": "poses",
+      "name": "Soul Meditation",
+      "loop": true
+    }
+  ],
+  "Feed the Pigeons": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x07b85501d72c5fb158b1ad561efb0c8161b69955:0",
+      "category": "fun",
+      "name": "Feed the Pigeons",
+      "loop": true
+    }
+  ],
+  "Moves": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x07f90c44b82a14088bba4bee597878e6f970a4ee:0",
+      "category": "dance",
+      "name": "Brain Fart Dance",
+      "loop": true
+    }
+  ],
+  "Mini-Games Rewards": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x083230402677cad61d7a0cc040dc8a08cfeb809e:21",
+      "category": "fun",
+      "name": "Hanoi Juggler",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x083230402677cad61d7a0cc040dc8a08cfeb809e:3",
+      "category": "miscellaneous",
+      "name": "Color Pop Gun",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x083230402677cad61d7a0cc040dc8a08cfeb809e:4",
+      "category": "dance",
+      "name": "Math Kittens Dance",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x083230402677cad61d7a0cc040dc8a08cfeb809e:5",
+      "category": "fun",
+      "name": "Tube Percussion",
+      "loop": false
+    }
+  ],
+  "Waiting For Someone": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x095729d1536251e9552bc354f74c78a99c4cce44:0",
+      "category": "poses",
+      "name": "Waiting For Someone",
+      "loop": true
+    }
+  ],
+  "Salt Gesture // FBRN ": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x09c58b015a1f34e1546056811e60d5abcc14771d:0",
+      "category": "fun",
+      "name": "Salt Gesture // FBRN",
+      "loop": false
+    }
+  ],
+  "Hula Hooping ": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a2efdce6246ea3bd39d3330c5d8f97391bab11d:0",
+      "category": "stunt",
+      "name": "Hula Hoop",
+      "loop": true
+    }
+  ],
+  "ICE Poker Emotes II": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a31cbfbd365aab8616a22fbf13a47443086bdc8:0",
+      "category": "reactions",
+      "name": "Chef's Kiss II",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a31cbfbd365aab8616a22fbf13a47443086bdc8:1",
+      "category": "fun",
+      "name": "Card Peek",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a31cbfbd365aab8616a22fbf13a47443086bdc8:10",
+      "category": "fun",
+      "name": "Tai Chi I",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a31cbfbd365aab8616a22fbf13a47443086bdc8:11",
+      "category": "fun",
+      "name": "Hula dance",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a31cbfbd365aab8616a22fbf13a47443086bdc8:12",
+      "category": "fun",
+      "name": "Clap Push Ups",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a31cbfbd365aab8616a22fbf13a47443086bdc8:13",
+      "category": "fun",
+      "name": "Sheesh",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a31cbfbd365aab8616a22fbf13a47443086bdc8:14",
+      "category": "fun",
+      "name": "Double Italian Hand",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a31cbfbd365aab8616a22fbf13a47443086bdc8:15",
+      "category": "fun",
+      "name": "Heel Click",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a31cbfbd365aab8616a22fbf13a47443086bdc8:16",
+      "category": "fun",
+      "name": "60s Dance",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a31cbfbd365aab8616a22fbf13a47443086bdc8:17",
+      "category": "fun",
+      "name": "Laughing and Pointing",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a31cbfbd365aab8616a22fbf13a47443086bdc8:18",
+      "category": "fun",
+      "name": "Chef's Kiss I",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a31cbfbd365aab8616a22fbf13a47443086bdc8:19",
+      "category": "fun",
+      "name": "Rock, Paper, Scissors - Paper",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a31cbfbd365aab8616a22fbf13a47443086bdc8:2",
+      "category": "fun",
+      "name": "No, No, No ",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a31cbfbd365aab8616a22fbf13a47443086bdc8:20",
+      "category": "fun",
+      "name": "Rock, Paper, Scissors - Scissors",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a31cbfbd365aab8616a22fbf13a47443086bdc8:21",
+      "category": "fun",
+      "name": "Rock, Paper, Scissors - Rock",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a31cbfbd365aab8616a22fbf13a47443086bdc8:3",
+      "category": "fun",
+      "name": "Heart Attack",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a31cbfbd365aab8616a22fbf13a47443086bdc8:4",
+      "category": "fun",
+      "name": "Sensei Bow ",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a31cbfbd365aab8616a22fbf13a47443086bdc8:5",
+      "category": "fun",
+      "name": "Levitation",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a31cbfbd365aab8616a22fbf13a47443086bdc8:6",
+      "category": "fun",
+      "name": "Round House",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a31cbfbd365aab8616a22fbf13a47443086bdc8:7",
+      "category": "fun",
+      "name": "Rubbing Hands Together",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a31cbfbd365aab8616a22fbf13a47443086bdc8:8",
+      "category": "fun",
+      "name": "Fist Pump",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a31cbfbd365aab8616a22fbf13a47443086bdc8:9",
+      "category": "fun",
+      "name": "Trust Fall",
+      "loop": false
+    }
+  ],
+  "Strictly 4 the Breakers ($RAP)": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a8ecd4f7072d83e1579a8d659ad57a1145892c3:0",
+      "category": "dance",
+      "name": "Baby Freeze ",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0a8ecd4f7072d83e1579a8d659ad57a1145892c3:1",
+      "category": "dance",
+      "name": "Top Rock",
+      "loop": true
+    }
+  ],
+  "Decentraland Game Expo 2024": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0ae365f8acc27f2c95fc7d60cf49a74f3af21573:3",
+      "category": "fun",
+      "name": "Retro Gamer",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0ae365f8acc27f2c95fc7d60cf49a74f3af21573:4",
+      "category": "fun",
+      "name": "Pixels Invaders",
+      "loop": true
+    }
+  ],
+  "Emotes Spin & Win": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0b472c2c04325a545a43370b54e93c87f3d5badf:0",
+      "category": "miscellaneous",
+      "name": "Tennis Serve",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0b472c2c04325a545a43370b54e93c87f3d5badf:1",
+      "category": "greetings",
+      "name": "Poppin’ Champagne",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0b472c2c04325a545a43370b54e93c87f3d5badf:2",
+      "category": "greetings",
+      "name": "Love Granade",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0b472c2c04325a545a43370b54e93c87f3d5badf:3",
+      "category": "fun",
+      "name": "Funny Proposal",
+      "loop": false
+    }
+  ],
+  "Crowd Surfing ": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0bdde955839a9f65d3628918981862dd04cad2e5:0",
+      "category": "stunt",
+      "name": "Crowd Surf Part 1",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0bdde955839a9f65d3628918981862dd04cad2e5:1",
+      "category": "stunt",
+      "name": "Crowd Surf 2",
+      "loop": true
+    }
+  ],
+  "Make a Heart": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0bfd2a487958d85cfe05040b291fc9974559f122:0",
+      "category": "poses",
+      "name": "Make a Heart",
+      "loop": true
+    }
+  ],
+  "SAX DCLMF23": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0c956c74518ed34afb7b137d9ddfdaea7ca13751:0",
+      "category": "fun",
+      "name": "HOT SAX BY DAPPCRAFT",
+      "loop": true
+    }
+  ],
+  "Halloween Edition": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0d72d77f3809d2e9b6194fe59e60b02c19cf4df6:0",
+      "category": "horror",
+      "name": "Pumpkin Coffin – Halloween ",
+      "loop": true
+    }
+  ],
+  "Bug Hunter": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0de0ee088db1d9820bb44ec2736570b2ecef9002:0",
+      "category": "miscellaneous",
+      "name": "Bug Hunter",
+      "loop": true
+    }
+  ],
+  "First Sip": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0eacee06431ff707f1891bdbca10db25779f70d9:0",
+      "category": "dance",
+      "name": "First Sip",
+      "loop": true
+    }
+  ],
+  "Office life": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x0f4c74e678c7ae8e6f24aa25b48293ab30cf1b82:0",
+      "category": "miscellaneous",
+      "name": "Busy at desk",
+      "loop": true
+    }
+  ],
+  "METATIGER Xmas 2025": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x10a078868e6d8c21e1eb40d99ed0fae88dddaacb:0",
+      "category": "poses",
+      "name": "Xmas Deer",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x10a078868e6d8c21e1eb40d99ed0fae88dddaacb:1",
+      "category": "poses",
+      "name": "Xmas Tiger Deer",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x10a078868e6d8c21e1eb40d99ed0fae88dddaacb:2",
+      "category": "poses",
+      "name": "Xmas White Deer",
+      "loop": true
+    }
+  ],
+  "Terra_Series_Greetings": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x10bf0de04360d9d4b6187a0a44699eb97b6d572c:0",
+      "category": "greetings",
+      "name": "\"Hi\"",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x10bf0de04360d9d4b6187a0a44699eb97b6d572c:1",
+      "category": "greetings",
+      "name": "\"Hey! Over here!\"",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x10bf0de04360d9d4b6187a0a44699eb97b6d572c:2",
+      "category": "greetings",
+      "name": "\"Finger Guns\"",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x10bf0de04360d9d4b6187a0a44699eb97b6d572c:3",
+      "category": "poses",
+      "name": "\"Fashion Twirl\"",
+      "loop": false
+    }
+  ],
+  "Doki Sitting Emote - Elegant": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x1441f163fc9c531bc95cbe9534935fe8f3aa4881:0",
+      "category": "miscellaneous",
+      "name": "Doki Sitting Emote - Elegant",
+      "loop": true
+    }
+  ],
+  "Social Emotes Launch": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x145d8f54194283a6ae71ad4316040d4c13633194:0",
+      "category": "greetings",
+      "name": "HighFive",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x145d8f54194283a6ae71ad4316040d4c13633194:1",
+      "category": "greetings",
+      "name": "Say Hello, Friend",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x145d8f54194283a6ae71ad4316040d4c13633194:2",
+      "category": "fun",
+      "name": "Piggyback Ride",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x145d8f54194283a6ae71ad4316040d4c13633194:3",
+      "category": "fun",
+      "name": "Play Rock Paper Scissors",
+      "loop": false
+    }
+  ],
+  "BUCTOWN BRAWLER SET": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x14b37b06d76e8b4cc8e43336b841862df63058b2:3",
+      "category": "miscellaneous",
+      "name": "The Billionaire Strut",
+      "loop": false
+    }
+  ],
+  "Decentraland Tutorial Wearables": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x167d6b63511a7b5062d1f7b07722fccbbffb5105:0",
+      "category": "dance",
+      "name": "Bezier Dance",
+      "loop": true
+    }
+  ],
+  "Sexy Recline": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x1844fdd04a868a5151353ec8b87d843eafab2ee1:0",
+      "category": "poses",
+      "name": "Sexy Recline",
+      "loop": true
+    }
+  ],
+  "TensaiStudio Emotes": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x18736485ee3e7a4ee9b7fa14fe2017e69d0d8bf1:0",
+      "category": "fun",
+      "name": "Kancho",
+      "loop": false
+    }
+  ],
+  "Not Worthy": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x19e1f63712c7d4004e0185c0bb851e5724785a20:0",
+      "category": "greetings",
+      "name": "Not Worthy",
+      "loop": true
+    }
+  ],
+  "Abranimations Dance #3": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x1a4562ff03fd538cbbcbc41d81594f6d3f7dabfb:0",
+      "category": "dance",
+      "name": "Moovin Like Bernie",
+      "loop": true
+    }
+  ],
+  "Friendly Fingers": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x1b15bad4f4e6e41d7baf96abd3b9cfa22b993a63:0",
+      "category": "fun",
+      "name": "Finger Roll",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x1b15bad4f4e6e41d7baf96abd3b9cfa22b993a63:1",
+      "category": "fun",
+      "name": "Popping the Question",
+      "loop": false
+    }
+  ],
+  "Pink Drink": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x1b195e5b9b1cb97440a0d7a4f789ee9722d0103e:0",
+      "category": "poses",
+      "name": "Pink Drink",
+      "loop": true
+    }
+  ],
+  "Abranimations Dance #5": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x1bfdb21356e556ceb893b400eb237c18935c1fb2:0",
+      "category": "dance",
+      "name": "Bunny Hop Dance",
+      "loop": true
+    }
+  ],
+  "Xalax Emotes": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x1c4e21a6b3451dd2aca5efa71fe2069bd8bdc9be:0",
+      "category": "fun",
+      "name": "Zero Gravity by Xalax",
+      "loop": true
+    }
+  ],
+  "Jack Frost \"Nightfall\"": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x1d30377fe076d67f573179a6800d5cff1d5b3187:0",
+      "category": "dance",
+      "name": "Jack Frost Sad Boi",
+      "loop": true
+    }
+  ],
+  "Roustan Tiny Pixie II": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x1d69e7f498cae0b9be0ee15ceb06d68c66255bda:0",
+      "category": "fun",
+      "name": "Tiny Pixie II",
+      "loop": true
+    }
+  ],
+  "DJ MetaMoves": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x1d95b6101113eb13078f78ab5e52b0d96d7a69b0:0",
+      "category": "miscellaneous",
+      "name": "DJ MetaMoves",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x1d95b6101113eb13078f78ab5e52b0d96d7a69b0:1",
+      "category": "miscellaneous",
+      "name": "DJ Scratch MetaMoves",
+      "loop": true
+    }
+  ],
+  "Sparkles Butt Bounce": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x1da67db5cfad7211281ec9c9ece1585bc1f180eb:0",
+      "category": "fun",
+      "name": "Butt Bounce",
+      "loop": true
+    }
+  ],
+  "DripWalk": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x1e6c79a640d2d9b02464a7f5ea034d1b59a5b5b7:0",
+      "category": "dance",
+      "name": "DripWalk",
+      "loop": true
+    }
+  ],
+  "Halloween 2023 Electric Chair": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x1ecca9858dc8f36f2b65b44c987241556d24692f:0",
+      "category": "fun",
+      "name": "Christmas in Decentraland",
+      "loop": true
+    }
+  ],
+  "WJ Hallow's Eve  Limited Edition": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x1fe6666ff40581318c982ead4eca1ca68902c402:1",
+      "category": "horror",
+      "name": "Collecting Souls",
+      "loop": true
+    }
+  ],
+  "On the Edge emote": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x20c39e66992301bba9a25695f311b9c03cc3e802:0",
+      "category": "stunt",
+      "name": "On the Edge",
+      "loop": true
+    }
+  ],
+  "ICE Poker Emotes IV ": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x23b9eb75d1fddcdaf32185ea2f0178cf6ff07ad9:0",
+      "category": "dance",
+      "name": "Jordan Breakdance",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x23b9eb75d1fddcdaf32185ea2f0178cf6ff07ad9:1",
+      "category": "dance",
+      "name": "Guitar Solo",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x23b9eb75d1fddcdaf32185ea2f0178cf6ff07ad9:10",
+      "category": "dance",
+      "name": "Stompin'",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x23b9eb75d1fddcdaf32185ea2f0178cf6ff07ad9:11",
+      "category": "dance",
+      "name": "Whip",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x23b9eb75d1fddcdaf32185ea2f0178cf6ff07ad9:12",
+      "category": "dance",
+      "name": "Take Off",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x23b9eb75d1fddcdaf32185ea2f0178cf6ff07ad9:13",
+      "category": "dance",
+      "name": "Snow Angel",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x23b9eb75d1fddcdaf32185ea2f0178cf6ff07ad9:2",
+      "category": "dance",
+      "name": "Ballet Spin",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x23b9eb75d1fddcdaf32185ea2f0178cf6ff07ad9:3",
+      "category": "dance",
+      "name": "Wobble",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x23b9eb75d1fddcdaf32185ea2f0178cf6ff07ad9:4",
+      "category": "dance",
+      "name": "Risky Business",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x23b9eb75d1fddcdaf32185ea2f0178cf6ff07ad9:5",
+      "category": "dance",
+      "name": "Milly Rock",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x23b9eb75d1fddcdaf32185ea2f0178cf6ff07ad9:6",
+      "category": "dance",
+      "name": "Smack That",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x23b9eb75d1fddcdaf32185ea2f0178cf6ff07ad9:7",
+      "category": "dance",
+      "name": "Griddy",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x23b9eb75d1fddcdaf32185ea2f0178cf6ff07ad9:8",
+      "category": "dance",
+      "name": "Vandamned",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x23b9eb75d1fddcdaf32185ea2f0178cf6ff07ad9:9",
+      "category": "dance",
+      "name": "Can't Touch This",
+      "loop": true
+    }
+  ],
+  "Flamenco Dance": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x2418edc451e6b7c3339c7b953d5b14d606993a14:0",
+      "category": "dance",
+      "name": "Flamenco Dance",
+      "loop": true
+    }
+  ],
+  "afSLAY": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x24c8a3146a8597349d180c341468fc35abecae45:0",
+      "category": "poses",
+      "name": "afSLAY",
+      "loop": true
+    }
+  ],
+  "Star Gazing": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x24e6e4129277f0053aae3203b0f7f3e290cbd953:0",
+      "category": "poses",
+      "name": "Star Gazing",
+      "loop": true
+    }
+  ],
+  "Mushroom Hangout": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x255157c55bb647143466bd85795e5f352ec64339:0",
+      "category": "poses",
+      "name": "Mushroom Hangout",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x255157c55bb647143466bd85795e5f352ec64339:1",
+      "category": "poses",
+      "name": "Mushroom Friend",
+      "loop": true
+    }
+  ],
+  "Pixel to Passion - part II": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x270231aa9b6c6134f03b98f3c58dc25b744fb646:0",
+      "category": "miscellaneous",
+      "name": "<3",
+      "loop": true
+    }
+  ],
+  "DT Pack": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x272714afe95651035ebaec93915c2b7f397155df:0",
+      "category": "dance",
+      "name": "Shoot Dance ",
+      "loop": false
+    }
+  ],
+  "Emotes by SingleEyeCreations 1": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x295975ac13e48e558b4d74fad99306f503a8ab91:0",
+      "category": "miscellaneous",
+      "name": "I'm Watching You",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x295975ac13e48e558b4d74fad99306f503a8ab91:1",
+      "category": "fun",
+      "name": "Finger Walking",
+      "loop": false
+    }
+  ],
+  "Kinetix Dance Emotes": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x2a867765a779caba015b6aa7b421b224016f8808:0",
+      "category": "dance",
+      "name": "Let's go!",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x2a867765a779caba015b6aa7b421b224016f8808:1",
+      "category": "dance",
+      "name": "Happiness ",
+      "loop": true
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x2a867765a779caba015b6aa7b421b224016f8808:2",
+      "category": "dance",
+      "name": "Scarecrow dance",
+      "loop": true
+    }
+  ],
+  "Christmas Spirit": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x2ab21b6cb678fe5637a91af58e6067da71d33455:0",
+      "category": "fun",
+      "name": "Christmas Spirit",
+      "loop": true
+    }
+  ],
+  "Decentraland Art Week 2024": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x2ac52481bce4aa27b052cf3596a1187b7648dac5:2",
+      "category": "miscellaneous",
+      "name": "Art Rebel",
+      "loop": false
+    },
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x2ac52481bce4aa27b052cf3596a1187b7648dac5:3",
+      "category": "poses",
+      "name": "Easel Painter",
+      "loop": true
+    }
+  ],
+  "Super Kicks v1.0": [
+    {
+      "id": "urn:decentraland:matic:collections-v2:0x2c1c79d83b00cea2dbfe6c35b787c65cb22accba:0",
+      "category": "stunt",
+      "name": "Super Kicks v1.0",
+      "loop": false
+    }
+  ]
+}

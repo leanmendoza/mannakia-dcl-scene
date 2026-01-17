@@ -594,8 +594,8 @@
       "data": {
         "0": {
           "json": {
-            "name": "Mannakia Scene",
-            "description": "template scene with SDK7",
+            "name": "MannakiaWorld",
+            "description": "World Test Scene",
             "thumbnail": "images/scene-thumbnail.png",
             "ageRating": "T",
             "categories": [],

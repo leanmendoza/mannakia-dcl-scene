@@ -30,6 +30,14 @@ import {
   UI as AnimatedBannersUi,
   main as AnimatedBannersMain
 } from '../animated-banners'
+import {
+  UI as AvatarShapeTestUi,
+  main as AvatarShapeTestMain
+} from '../avatar-shape-test'
+import {
+  UI as AvatarStressTestUi,
+  main as AvatarStressTestMain
+} from '../avatar-stress-test'
 
 export type SceneItem = {
   name: string
@@ -110,7 +118,17 @@ export const scenesOptions: SceneItem[] = [
   {
     name: 'Animated Banners',
     mainFn: AnimatedBannersMain,
-    ui: AnimatedBannersUi,
+    ui: AnimatedBannersUi
+  },
+  {
+    name: 'AvatarShape Test',
+    mainFn: AvatarShapeTestMain,
+    ui: AvatarShapeTestUi
+  },
+  {
+    name: 'Avatar Stress Test',
+    mainFn: AvatarStressTestMain,
+    ui: AvatarStressTestUi,
     default: true
   }
 ]
