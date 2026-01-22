@@ -33,6 +33,7 @@ type ProfileAvatar = {
   name: string
   bodyShape: string
   wearables: string[]
+  forceRender: string[]
   emotes: Array<{ slot: number; urn: string }>
   skinColor: { r: number; g: number; b: number }
   hairColor: { r: number; g: number; b: number }
@@ -49,6 +50,7 @@ type DeploymentEntity = {
       avatar: {
         bodyShape: string
         wearables: string[]
+        forceRender?: string[]
         emotes: Array<{ slot: number; urn: string }>
         snapshots?: { face256?: string; body?: string }
         eyes?: { color: { r: number; g: number; b: number } }
@@ -235,6 +237,7 @@ function spawnAvatarFromProfile(position: Vector3, profile: ProfileAvatar): Avat
     name: profile.name,
     bodyShape: profile.bodyShape,
     wearables: profile.wearables,
+    // forceRender: profile.forceRender,
     emotes: profile.emotes.map((e) => e.urn),
     skinColor: profile.skinColor,
     hairColor: profile.hairColor,
@@ -400,6 +403,13 @@ function triggerRandomEmotes(): void {
   }
 }
 
+// Generate a unique key for a profile based on wearables and forceRender
+function getProfileKey(wearables: string[], forceRender: string[]): string {
+  const sortedWearables = [...wearables].sort().join('|')
+  const sortedForceRender = [...forceRender].sort().join('|')
+  return `${sortedWearables}::${sortedForceRender}`
+}
+
 // Fetch pre-made profiles from Decentraland deployments API
 async function fetchProfiles(): Promise<void> {
   profilesLoading = true
@@ -421,16 +431,29 @@ async function fetchProfiles(): Promise<void> {
     const data: DeploymentsResponse = await response.json()
     console.log(`Fetched ${data.deployments.length} profile deployments`)
 
-    // Extract profile data from deployments
+    // Extract profile data from deployments, filtering duplicates
     fetchedProfiles.length = 0
+    const seenProfiles = new Set<string>()
+
     for (const deployment of data.deployments) {
       if (deployment.metadata?.avatars?.[0]?.avatar) {
         const av = deployment.metadata.avatars[0]
         const avatar = av.avatar
+        const wearables = avatar.wearables || []
+        const forceRender = avatar.forceRender || []
+
+        // Check for duplicate based on wearables and forceRender
+        const profileKey = getProfileKey(wearables, forceRender)
+        if (seenProfiles.has(profileKey)) {
+          continue
+        }
+        seenProfiles.add(profileKey)
+
         fetchedProfiles.push({
           name: av.name || 'Unknown',
           bodyShape: avatar.bodyShape || 'urn:decentraland:off-chain:base-avatars:BaseMale',
-          wearables: avatar.wearables || [],
+          wearables,
+          forceRender,
           emotes: avatar.emotes || [],
           skinColor: avatar.skin?.color || { r: 0.8, g: 0.6, b: 0.5 },
           hairColor: avatar.hair?.color || { r: 0.3, g: 0.2, b: 0.1 },
@@ -439,7 +462,7 @@ async function fetchProfiles(): Promise<void> {
       }
     }
 
-    console.log(`Parsed ${fetchedProfiles.length} valid profiles`)
+    console.log(`Parsed ${fetchedProfiles.length} unique profiles (filtered duplicates by wearables+forceRender)`)
     profilesLoading = false
     forceUiUpdate()
   } catch (error) {
