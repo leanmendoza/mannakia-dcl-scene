@@ -25,7 +25,7 @@ import {
   MainSceneUi as AnimatorSceneUi,
   main as AnimatorSceneMain
 } from '../animator'
-import {main as GltfNodeModifierStressMain } from '../gltf-node-modifier-stress'
+import { main as GltfNodeModifierStressMain } from '../gltf-node-modifier-stress'
 import {
   UI as AnimatedBannersUi,
   main as AnimatedBannersMain
@@ -38,6 +38,10 @@ import {
   UI as AvatarStressTestUi,
   main as AvatarStressTestMain
 } from '../avatar-stress-test'
+import {
+  UI as LocomotionTestUi,
+  main as LocomotionTestMain
+} from '../locomotion-test'
 
 export type SceneItem = {
   name: string
@@ -48,6 +52,12 @@ export type SceneItem = {
 }
 
 export const scenesOptions: SceneItem[] = [
+  {
+    name: 'Locomotion Test',
+    mainFn: LocomotionTestMain,
+    ui: LocomotionTestUi,
+    default: true
+  },
   {
     name: 'Empty',
     mainFn: undefined,
@@ -128,7 +138,6 @@ export const scenesOptions: SceneItem[] = [
   {
     name: 'Avatar Stress Test',
     mainFn: AvatarStressTestMain,
-    ui: AvatarStressTestUi,
-    default: true
+    ui: AvatarStressTestUi
   }
 ]
