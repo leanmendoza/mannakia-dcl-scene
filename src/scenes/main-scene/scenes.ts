@@ -42,6 +42,7 @@ import {
   UI as LocomotionTestUi,
   main as LocomotionTestMain
 } from '../locomotion-test'
+import { main as MaterialPlaneTestMain } from '../material-plane-test'
 
 export type SceneItem = {
   name: string
@@ -53,10 +54,15 @@ export type SceneItem = {
 
 export const scenesOptions: SceneItem[] = [
   {
+    name: 'Material Plane Test',
+    mainFn: MaterialPlaneTestMain,
+    ui: undefined,
+    default: true
+  },
+  {
     name: 'Locomotion Test',
     mainFn: LocomotionTestMain,
-    ui: LocomotionTestUi,
-    default: true
+    ui: LocomotionTestUi
   },
   {
     name: 'Empty',
