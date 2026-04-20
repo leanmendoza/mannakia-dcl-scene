@@ -206,7 +206,6 @@ function spawnAvatar(position: Vector3): AvatarInstance {
     bodyShape,
     wearables,
     emotes: [],
-    forceRender: [],
     skinColor: randomColor3(),
     hairColor: randomColor3(),
     eyeColor: randomColor3()
@@ -238,7 +237,6 @@ function spawnAvatarFromProfile(position: Vector3, profile: ProfileAvatar): Avat
     name: profile.name,
     bodyShape: profile.bodyShape,
     wearables: profile.wearables,
-    forceRender: profile.forceRender,
     emotes: profile.emotes.map((e) => e.urn),
     skinColor: profile.skinColor,
     hairColor: profile.hairColor,

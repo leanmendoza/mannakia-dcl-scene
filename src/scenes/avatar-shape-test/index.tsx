@@ -97,7 +97,6 @@ export function main(): void {
     bodyShape: 'urn:decentraland:off-chain:base-avatars:BaseMale',
     wearables: MALE_WEARABLES,
     emotes: [],
-    forceRender: [],
     skinColor: { r: 0.8, g: 0.6, b: 0.5 },
     hairColor: { r: 0.3, g: 0.2, b: 0.1 },
     eyeColor: { r: 0.2, g: 0.5, b: 0.7 }
@@ -115,7 +114,6 @@ export function main(): void {
     bodyShape: 'urn:decentraland:off-chain:base-avatars:BaseMale',
     wearables: [currentShowOnlyWearable],
     emotes: [],
-    forceRender: [],
     showOnlyWearables: true,
     skinColor: { r: 0.9, g: 0.7, b: 0.6 },
     hairColor: { r: 0.8, g: 0.1, b: 0.1 },
@@ -138,7 +136,6 @@ export function main(): void {
     bodyShape: 'urn:decentraland:off-chain:base-avatars:BaseMale',
     wearables: MALE_WEARABLES,
     emotes: [],
-    forceRender: [],
     skinColor: { r: 0.6, g: 0.4, b: 0.3 },
     hairColor: { r: 0.1, g: 0.1, b: 0.1 },
     eyeColor: { r: 0.1, g: 0.3, b: 0.1 },
@@ -167,7 +164,6 @@ export function main(): void {
       'urn:decentraland:off-chain:base-avatars:bun_shoes'
     ],
     emotes: [],
-    forceRender: [],
     skinColor: { r: 0.95, g: 0.75, b: 0.65 },
     hairColor: { r: 0.9, g: 0.6, b: 0.1 },
     eyeColor: { r: 0.4, g: 0.2, b: 0.1 }

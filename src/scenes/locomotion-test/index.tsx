@@ -7,7 +7,6 @@ import {
   TextShape,
   pointerEventsSystem,
   InputAction,
-  AvatarLocomotionSettings
 } from '@dcl/sdk/ecs'
 import { Color4, Vector3, Quaternion } from '@dcl/sdk/math'
 import ReactEcs, { Button, Label, type JSX, UiEntity } from '@dcl/sdk/react-ecs'
@@ -107,15 +106,15 @@ function applySettings(settings: typeof zones[0]['settings'], zoneName: string):
     zoneName
   }
 
-  // Apply to root entity
-  if (Object.keys(settings).length === 0) {
-    // Remove component to reset to defaults (only if it exists)
-    if (AvatarLocomotionSettings.has(engine.RootEntity)) {
-      AvatarLocomotionSettings.deleteFrom(engine.RootEntity)
-    }
-  } else {
-    AvatarLocomotionSettings.createOrReplace(engine.RootEntity, settings)
-  }
+  // // Apply to root entity
+  // if (Object.keys(settings).length === 0) {
+  //   // Remove component to reset to defaults (only if it exists)
+  //   if (AvatarLocomotionSettings.has(engine.RootEntity)) {
+  //     AvatarLocomotionSettings.deleteFrom(engine.RootEntity)
+  //   }
+  // } else {
+  //   AvatarLocomotionSettings.createOrReplace(engine.RootEntity, settings)
+  // }
 
   console.log(`Applied locomotion settings for zone: ${zoneName}`, settings)
 }
