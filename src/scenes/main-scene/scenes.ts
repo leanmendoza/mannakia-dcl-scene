@@ -23,6 +23,7 @@ import {
   UI as AvatarModifierAreaTestUi,
   main as AvatarModifierAreaTestMain
 } from '../avatar-modifier-area-test'
+import { main as GlideTestMain } from '../glide-test'
 
 export type SceneItem = {
   name: string
@@ -48,6 +49,11 @@ export const scenesOptions: SceneItem[] = [
     name: 'Locomotion Test',
     mainFn: LocomotionTestMain,
     ui: LocomotionTestUi
+  },
+  {
+    name: 'Glide Test',
+    mainFn: GlideTestMain,
+    ui: undefined
   },
   {
     name: 'Empty',
