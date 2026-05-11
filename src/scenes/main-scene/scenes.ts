@@ -54,6 +54,14 @@ import {
   main as AvatarModifierAreaTestMain
 } from '../avatar-modifier-area-test'
 import { UI as GlideTestUi, main as GlideTestMain } from '../glide-test'
+import {
+  UI as PlayersTrackerTestUi,
+  main as PlayersTrackerTestMain
+} from '../players-tracker-test'
+import {
+  UI as AudioSourceTestUi,
+  main as AudioSourceTestMain
+} from '../audio-source-test'
 
 export type SceneItem = {
   name: string
@@ -99,6 +107,11 @@ export const scenesOptions: SceneItem[] = [
     name: 'Players API test',
     mainFn: PlayerApiTestMain,
     ui: PlayersApiUi
+  },
+  {
+    name: 'Players Tracker (issue #1818)',
+    mainFn: PlayersTrackerTestMain,
+    ui: PlayersTrackerTestUi
   },
   {
     name: 'Ethereum API test',
@@ -181,5 +194,10 @@ export const scenesOptions: SceneItem[] = [
     name: 'AvatarModifierArea Test',
     mainFn: AvatarModifierAreaTestMain,
     ui: AvatarModifierAreaTestUi
+  },
+  {
+    name: 'AudioSource Test (issue #1761)',
+    mainFn: AudioSourceTestMain,
+    ui: AudioSourceTestUi
   }
 ]

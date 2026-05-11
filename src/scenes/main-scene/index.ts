@@ -1,6 +1,7 @@
 import { engine, UiCanvasInformation } from '@dcl/sdk/ecs'
 import { scenesOptions } from './scenes'
 import { setChangeScene, setupUi } from './ui'
+import { startPlayersTracker } from './players-tracker'
 
 export function main(): void {
   setupUi(undefined)
@@ -10,6 +11,7 @@ export function main(): void {
   }
   setChangeScene(sceneIndex)
 
+  startPlayersTracker()
   startCanvasInfoLogger()
 }
 
