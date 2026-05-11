@@ -71,6 +71,7 @@ export type SceneItem = {
   default?: boolean
 }
 
+// Order: newest scenes at the top, oldest at the bottom. Add new scenes above.
 export const scenesOptions: SceneItem[] = [
   {
     name: 'AudioSource Test (issue #1761)',
