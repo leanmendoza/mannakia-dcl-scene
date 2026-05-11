@@ -73,10 +73,40 @@ export type SceneItem = {
 
 export const scenesOptions: SceneItem[] = [
   {
+    name: 'AudioSource Test (issue #1761)',
+    mainFn: AudioSourceTestMain,
+    ui: AudioSourceTestUi,
+    default: true
+  },
+  {
+    name: 'Players Tracker (issue #1818)',
+    mainFn: PlayersTrackerTestMain,
+    ui: PlayersTrackerTestUi
+  },
+  {
+    name: 'Glide Test',
+    mainFn: GlideTestMain,
+    ui: GlideTestUi
+  },
+  {
+    name: 'AvatarModifierArea Test',
+    mainFn: AvatarModifierAreaTestMain,
+    ui: AvatarModifierAreaTestUi
+  },
+  {
     name: 'Player & Camera UI',
     mainFn: PlayerCameraMain,
-    ui: PlayerCameraUi,
-    default: true
+    ui: PlayerCameraUi
+  },
+  {
+    name: 'Video Screen Test',
+    mainFn: VideoScreenTestMain,
+    ui: undefined
+  },
+  {
+    name: 'Virtual Camera Test',
+    mainFn: VirtualCameraTestMain,
+    ui: undefined
   },
   {
     name: 'Material Plane Test',
@@ -89,88 +119,6 @@ export const scenesOptions: SceneItem[] = [
     ui: LocomotionTestUi
   },
   {
-    name: 'Glide Test',
-    mainFn: GlideTestMain,
-    ui: GlideTestUi
-  },
-  {
-    name: 'Empty',
-    mainFn: undefined,
-    ui: undefined
-  },
-  {
-    name: 'TNT-Room',
-    mainFn: TntRoomMain,
-    ui: undefined
-  },
-  {
-    name: 'Players API test',
-    mainFn: PlayerApiTestMain,
-    ui: PlayersApiUi
-  },
-  {
-    name: 'Players Tracker (issue #1818)',
-    mainFn: PlayersTrackerTestMain,
-    ui: PlayersTrackerTestUi
-  },
-  {
-    name: 'Ethereum API test',
-    mainFn: EthereumApiTestMain,
-    ui: EthereumApiUi
-  },
-  {
-    name: 'Text Shape test',
-    mainFn: TextShapeApiTestMain,
-    ui: TextShapeApiUi
-  },
-  {
-    name: 'Tween test',
-    mainFn: TweenMain,
-    ui: TweenSceneUi
-  },
-  {
-    name: 'Gltf test',
-    mainFn: GltfTest,
-    ui: undefined
-  },
-  {
-    name: 'Ui test',
-    mainFn: UiTestMain,
-    ui: UiTestUi,
-    extended: true
-  },
-  {
-    name: 'Avatar Test',
-    mainFn: AvatarTestMain,
-    ui: AvatarTestUi
-  },
-  {
-    name: 'Avatar Texture Test',
-    mainFn: AvatarTextureTestMain,
-    ui: AvatarTextureTestUi
-  },
-  {
-    name: 'Sync Scene Test',
-    mainFn: SyncSceneMain,
-    ui: SyncSceneUi
-  },
-  {
-    name: 'Animator Scene Test',
-    mainFn: AnimatorSceneMain,
-    ui: AnimatorSceneUi
-  },
-  {
-    name: 'GltfNodeModifier Stress Test',
-    mainFn: GltfNodeModifierStressMain,
-    ui: undefined,
-    extended: true
-  },
-  {
-    name: 'Animated Banners',
-    mainFn: AnimatedBannersMain,
-    ui: AnimatedBannersUi
-  },
-  {
     name: 'AvatarShape Test',
     mainFn: AvatarShapeTestMain,
     ui: AvatarShapeTestUi
@@ -181,23 +129,75 @@ export const scenesOptions: SceneItem[] = [
     ui: AvatarStressTestUi
   },
   {
-    name: 'Virtual Camera Test',
-    mainFn: VirtualCameraTestMain,
+    name: 'Animated Banners',
+    mainFn: AnimatedBannersMain,
+    ui: AnimatedBannersUi
+  },
+  {
+    name: 'Avatar Texture Test',
+    mainFn: AvatarTextureTestMain,
+    ui: AvatarTextureTestUi
+  },
+  {
+    name: 'GltfNodeModifier Stress Test',
+    mainFn: GltfNodeModifierStressMain,
+    ui: undefined,
+    extended: true
+  },
+  {
+    name: 'Animator Scene Test',
+    mainFn: AnimatorSceneMain,
+    ui: AnimatorSceneUi
+  },
+  {
+    name: 'Sync Scene Test',
+    mainFn: SyncSceneMain,
+    ui: SyncSceneUi
+  },
+  {
+    name: 'Avatar Test',
+    mainFn: AvatarTestMain,
+    ui: AvatarTestUi
+  },
+  {
+    name: 'Ui test',
+    mainFn: UiTestMain,
+    ui: UiTestUi,
+    extended: true
+  },
+  {
+    name: 'Gltf test',
+    mainFn: GltfTest,
     ui: undefined
   },
   {
-    name: 'Video Screen Test',
-    mainFn: VideoScreenTestMain,
+    name: 'Tween test',
+    mainFn: TweenMain,
+    ui: TweenSceneUi
+  },
+  {
+    name: 'Text Shape test',
+    mainFn: TextShapeApiTestMain,
+    ui: TextShapeApiUi
+  },
+  {
+    name: 'Ethereum API test',
+    mainFn: EthereumApiTestMain,
+    ui: EthereumApiUi
+  },
+  {
+    name: 'Players API test',
+    mainFn: PlayerApiTestMain,
+    ui: PlayersApiUi
+  },
+  {
+    name: 'TNT-Room',
+    mainFn: TntRoomMain,
     ui: undefined
   },
   {
-    name: 'AvatarModifierArea Test',
-    mainFn: AvatarModifierAreaTestMain,
-    ui: AvatarModifierAreaTestUi
-  },
-  {
-    name: 'AudioSource Test (issue #1761)',
-    mainFn: AudioSourceTestMain,
-    ui: AudioSourceTestUi
+    name: 'Empty',
+    mainFn: undefined,
+    ui: undefined
   }
 ]
