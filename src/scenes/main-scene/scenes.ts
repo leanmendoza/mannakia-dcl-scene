@@ -62,6 +62,18 @@ import {
   UI as AudioSourceTestUi,
   main as AudioSourceTestMain
 } from '../audio-source-test'
+import {
+  UI as UiBorderTestUi,
+  main as UiBorderTestMain
+} from '../ui-border-test'
+import {
+  UI as UiScrollTestUi,
+  main as UiScrollTestMain
+} from '../ui-scroll-test'
+import {
+  UI as UiZIndexTestUi,
+  main as UiZIndexTestMain
+} from '../ui-zindex-test'
 
 export type SceneItem = {
   name: string
@@ -73,6 +85,21 @@ export type SceneItem = {
 
 // Order: newest scenes at the top, oldest at the bottom. Add new scenes above.
 export const scenesOptions: SceneItem[] = [
+  {
+    name: 'UI Border Test (eibriel)',
+    mainFn: UiBorderTestMain,
+    ui: UiBorderTestUi
+  },
+  {
+    name: 'UI Scroll Test (eibriel)',
+    mainFn: UiScrollTestMain,
+    ui: UiScrollTestUi
+  },
+  {
+    name: 'UI zIndex Test (eibriel)',
+    mainFn: UiZIndexTestMain,
+    ui: UiZIndexTestUi
+  },
   {
     name: 'AudioSource Test (issue #1761)',
     mainFn: AudioSourceTestMain,
